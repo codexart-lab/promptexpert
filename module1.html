@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompt Power! - Module 1: What's AI?</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Prompt Power! Your Guide to Talking to AI</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="module1.html" class="active">Module 1: What's AI?</a></li>
+            <li><a href="module2.html" class="">Module 2: First Prompts</a></li>
+            <li><a href="module3.html" class="">Module 3: Supercharging</a></li>
+            <li><a href="module4.html" class="">Module 4: Prompts in the Wild</a></li>
+            <li><a href="module5.html" class="">Module 5: You're a Pro!</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <main>
+            <h2>Module 1: What's AI and Why Talk to It?</h2>
+
+            <section class="learning-objectives">
+                <h3>What You'll Learn:</h3>
+                <ul>
+                    <li>Understand what AI is (like a super-smart helper).</li>
+                    <li>Learn why giving good instructions (prompts) is important.</li>
+                    <li>See examples of AI in everyday life.</li>
+                </ul>
+            </section>
+
+            <hr>
+
+            <section class="storyline">
+                <p><strong>Story Time:</strong> Hi there! I\"m Sparky, your friendly AI guide! Ever wondered about those super-smart computer brains everyone talks about? That\"s Artificial Intelligence, or AI for short. Let\"s explore this amazing world together!</p>
+                <img src=\"images/sparky_mascot_candidate.jpeg\" alt=\"Sparky the AI Mascot\" style=\"width: 150px; float: right; margin: 0 0 10px 10px; border-radius: 50%;\">          </section>
+
+            <section class="content">
+                <h3>Let's Dive In!</h3>
+                <p>Imagine you found a magic genie lamp! The genie (that's kind of like AI) can grant wishes, but only if you ask clearly. If you just mumble 'want stuff', the genie gets confused. But if you say 'I wish for a giant chocolate cake with sprinkles!', the genie knows exactly what to do. AI is similar! It needs clear instructions, called <strong>prompts</strong>, to understand what you want it to do.</p>
+                <p>So, what <em>is</em> AI? Think of it as computer programs designed to do tasks that usually need human smarts, like learning, solving problems, or understanding language. And a <strong>prompt</strong>? That's just the instruction you give to an AI. You've probably already used AI without even realizing it! Think about asking a voice assistant on a phone for the weather, or how characters in video games seem to react to what you do. That's AI in action!</p>
+            </section>
+
+            <section class="interactive-elements">
+                <h3>Try It Out!</h3>
+                <div class="quiz">                    <h4>Quick Quiz: Is This AI?</h4>
+                    <div id="quiz-m1-q1">
+                        <p><strong>Question 1:</strong> Your smart speaker playing music when you ask?</p>
+                        <label><input type="radio" name="m1q1" value="yes"> Yes, that uses AI!</label><br>
+                        <label><input type="radio" name="m1q1" value="no"> No, that's just a regular speaker.</label><br>
+                        <button onclick="checkAnswer(\'m1q1\', \'yes\', \'feedback-m1-q1\')">Check Answer</button>
+                        <p id="feedback-m1-q1" style="font-weight: bold;"></p>
+                    </div>
+                    <div id="quiz-m1-q2" style="margin-top: 15px;">
+                        <p><strong>Question 2:</strong> A character in your video game dodging an obstacle?</p>
+                        <label><input type="radio" name="m1q2" value="yes"> Yes, that uses AI!</label><br>
+                        <label><input type="radio" name="m1q2" value="no"> No, that's just programmed movement.</label><br>
+                        <button onclick="checkAnswer(\'m1q2\', \'yes\', \'feedback-m1-q2\')">Check Answer</button>
+                        <p id="feedback-m1-q2" style="font-weight: bold;"></p>
+                    </div>
+                    <div id="quiz-m1-q3" style="margin-top: 15px;">
+                        <p><strong>Question 3:</strong> Your calculator adding numbers?</p>
+                        <label><input type="radio" name="m1q3" value="yes"> Yes, that uses AI!</label><br>
+                        <label><input type="radio" name="m1q3" value="no"> No, that's just basic calculation.</label><br>
+                        <button onclick="checkAnswer(\'m1q3\', \'no\', \'feedback-m1-q3\')">Check Answer</button>
+                        <p id="feedback-m1-q3" style="font-weight: bold;"></p>
+                    </div>                </div>
+                <div class="drag-drop">
+                    <h4>Mix & Match: AI Tasks</h4>
+                    <p>Drag the task to the correct AI helper!</p>
+                    <div style="display: flex; justify-content: space-around; margin-top: 10px;">
+                        <div id="m1-drag-tasks" style="border: 1px solid #ccc; padding: 10px; min-height: 100px; width: 45%;">
+                            <p><strong>Tasks:</strong></p>
+                            <div id="m1-task1" draggable="true" ondragstart="drag(event)" style="background-color: #add8e6; padding: 5px; margin: 5px; cursor: grab;">Playing Chess</div>
+                            <div id="m1-task2" draggable="true" ondragstart="drag(event)" style="background-color: #add8e6; padding: 5px; margin: 5px; cursor: grab;">Getting Weather Forecast</div>
+                            <div id="m1-task3" draggable="true" ondragstart="drag(event)" style="background-color: #add8e6; padding: 5px; margin: 5px; cursor: grab;">Translating Languages</div>
+                        </div>
+                        <div id="m1-drop-zones" style="border: 1px solid #ccc; padding: 10px; min-height: 100px; width: 45%;">
+                            <p><strong>AI Helpers:</strong></p>
+                            <div id="m1-zone-game" ondrop="drop(event)" ondragover="allowDrop(event)" data-task="m1-task1" style="border: 1px dashed #999; padding: 10px; margin: 5px; min-height: 30px;">Game AI</div>
+                            <div id="m1-zone-voice" ondrop="drop(event)" ondragover="allowDrop(event)" data-task="m1-task2" style="border: 1px dashed #999; padding: 10px; margin: 5px; min-height: 30px;">Voice Assistant</div>
+                            <div id="m1-zone-translate" ondrop="drop(event)" ondragover="allowDrop(event)" data-task="m1-task3" style="border: 1px dashed #999; padding: 10px; margin: 5px; min-height: 30px;">Translation App</div>
+                        </div>
+                    </div>
+                    <p id="feedback-m1-drag" style="font-weight: bold; margin-top: 10px;"></p>               </div>
+                 <div class="chat-sim">
+                    <h4>Chat with Sparky!</h4>
+                    <div id="chat-m1" style="border: 1px solid #ccc; padding: 10px; height: 150px; overflow-y: scroll; margin-bottom: 10px; background-color: #f9f9f9;">
+                        <p><strong>Sparky:</strong> Hi! It's great to meet you! Ready to learn about prompts?</p>
+                        <!-- Chat messages will appear here -->
+                    </div>
+                    <input type="text" id="chat-input-m1" placeholder="Your message to Sparky..." style="width: 70%; padding: 8px;">
+                    <button onclick="sendChatMessage(\'m1\')">Send</button>
+                </div>
+            </section>
+
+            <hr>
+
+            <section class="summary">
+                <h3>Quick Recap!</h3>
+                <p>Awesome job exploring the basics! We learned that AI is like a super-smart helper that needs clear instructions called prompts. We also saw that AI is already part of our world!</p>
+                <ul>
+                    <li>AI stands for Artificial Intelligence - smart computer programs.</li>
+                    <li>Prompts are the instructions we give to AI.</li>
+                    <li>Clear prompts help AI understand what we want.</li>
+                </ul>
+            </section>
+
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Prompt Power Course. Let's learn together!</p>
+    </footer>
+
+    <!-- Optional JS for interactivity later -->
+    <script src="js/scripts.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompt Power! - Module 3: Supercharging</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Prompt Power! Your Guide to Talking to AI</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="module1.html" class="">Module 1: What's AI?</a></li>
+            <li><a href="module2.html" class="">Module 2: First Prompts</a></li>
+            <li><a href="module3.html" class="active">Module 3: Supercharging</a></li>
+            <li><a href="module4.html" class="">Module 4: Prompts in the Wild</a></li>
+            <li><a href="module5.html" class="">Module 5: You're a Pro!</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <main>
+            <h2>Module 3: Supercharging Your Prompts - Tips & Tricks</h2>
+
+            <section class="learning-objectives">
+                <h3>What You'll Learn:</h3>
+                <ul>
+                    <li>Learn cool techniques like telling the AI who to be (setting a role) or how to sound (setting the tone).</li>
+                    <li>Understand how to ask for answers in specific formats, like lists or poems.</li>
+                    <li>Explore how asking follow-up questions can make the AI's answers even better.</li>
+                </ul>
+            </section>
+
+            <hr>
+            <section class="storyline">
+                <p><strong>Story Time:</strong> Ready to level up your prompt skills? Now that you know the basics, let\"s learn some awesome tricks! Think of yourself as a movie director, and the AI is your actor. You need to give specific directions to get the perfect performance!</p>
+                 <img src=\"images/sparky_mascot_candidate.jpeg\" alt=\"Sparky the AI Mascot\" style=\"width: 120px; display: block; margin: 10px auto; border-radius: 10px;\">
+            </section>
+
+            <section class="content">
+                <h3>Let's Dive In!</h3>
+                <p>Just like a director tells an actor how to play a part, you can tell the AI how to act! Try starting your prompt with "<strong>Act as a...</strong>". For example, "Act as a pirate captain and explain gravity." This tells the AI to adopt a specific personality!</p>
+                <p>You can also set the <strong>tone</strong>. Want a funny story? Add "in a funny tone". Need a serious explanation? Ask for it "in a serious tone". You're the director!</p>
+                <p>What if you need the answer in a special way? Just ask! You can tell the AI to "Write the answer as a bulleted list," or "Explain this concept in a short poem," or "Summarize this in one sentence." Don't be afraid to ask for the <strong>format</strong> you need.</p>
+                <p>Sometimes the AI's first answer isn't quite right. That's okay! Just like talking to a person, you can ask follow-up questions. Try things like: "Can you explain that differently?", "Tell me more about the second point," or "Make it simpler." This is called <strong>iteration</strong> – trying again to make it better!</p>
+            </section>
+
+            <section class="interactive-elements">
+                <h3>Try It Out!</h3>
+                <div class="drag-drop">
+                    <h4>Mix & Match: Prompt Techniques</h4>
+                    <p>Drag the technique to the prompt that uses it best!</p>
+                    <div style="display: flex; justify-content: space-around; margin-top: 10px;">
+                        <div id="m3-drag-techs" style="border: 1px solid #ccc; padding: 10px; min-height: 120px; width: 45%;">
+                            <p><strong>Techniques:</strong></p>
+                            <div id="m3-tech1" draggable="true" ondragstart="drag(event)" style="background-color: #add8e6; padding: 5px; margin: 5px; cursor: grab;">Setting a Role</div>
+                            <div id="m3-tech2" draggable="true" ondragstart="drag(event)" style="background-color: #add8e6; padding: 5px; margin: 5px; cursor: grab;">Setting the Tone</div>
+                            <div id="m3-tech3" draggable="true" ondragstart="drag(event)" style="background-color: #add8e6; padding: 5px; margin: 5px; cursor: grab;">Asking for Format</div>
+                            <div id="m3-tech4" draggable="true" ondragstart="drag(event)" style="background-color: #add8e6; padding: 5px; margin: 5px; cursor: grab;">Iteration (Follow-up)</div>
+                        </div>
+                        <div id="m3-drop-zones" style="border: 1px solid #ccc; padding: 10px; min-height: 120px; width: 45%;">
+                            <p><strong>Prompts:</strong></p>
+                            <div id="m3-zone-role" ondrop="drop(event)" ondragover="allowDrop(event)" data-task="m3-tech1" style="border: 1px dashed #999; padding: 10px; margin: 5px; min-height: 30px;">"Act as a historian and explain the Roman Empire."</div>
+                            <div id="m3-zone-tone" ondrop="drop(event)" ondragover="allowDrop(event)" data-task="m3-tech2" style="border: 1px dashed #999; padding: 10px; margin: 5px; min-height: 30px;">"Write a scary ghost story."</div>
+                            <div id="m3-zone-format" ondrop="drop(event)" ondragover="allowDrop(event)" data-task="m3-tech3" style="border: 1px dashed #999; padding: 10px; margin: 5px; min-height: 30px;">"List the planets in order from the sun."</div>
+                            <div id="m3-zone-iterate" ondrop="drop(event)" ondragover="allowDrop(event)" data-task="m3-tech4" style="border: 1px dashed #999; padding: 10px; margin: 5px; min-height: 30px;">"Can you make that explanation simpler?"</div>
+                        </div>
+                    </div>
+                    <p id="feedback-m3-drag" style="font-weight: bold; margin-top: 10px;"></p>               </div>
+                <div class="quiz">
+                    <h4>Quick Quiz: Choose the Best Prompt</h4>
+                    <div id="quiz-m3-q1">
+                        <p><strong>Goal:</strong> Get a list of healthy breakfast ideas.</p>
+                        <p><strong>Which prompt is best?</strong></p>
+                        <label><input type="radio" name="m3q1" value="a"> A) Tell me about breakfast.</label><br>
+                        <label><input type="radio" name="m3q1" value="b"> B) List 5 healthy breakfast ideas suitable for a busy morning.</label><br>
+                        <label><input type="radio" name="m3q1" value="c"> C) Healthy breakfast.</label><br>
+                        <button onclick="checkAnswer(\'m3q1\', \'b\', \'feedback-m3-q1\')">Check Answer</button>
+                        <p id="feedback-m3-q1" style="font-weight: bold;"></p>
+                    </div>
+                    <div id="quiz-m3-q2" style="margin-top: 15px;">
+                        <p><strong>Goal:</strong> Get a poem about a cat.</p>
+                        <p><strong>Which prompt uses a helpful technique?</strong></p>
+                        <label><input type="radio" name="m3q2" value="a"> A) Cat poem.</label><br>
+                        <label><input type="radio" name="m3q2" value="b"> B) Write about cats.</label><br>
+                        <label><input type="radio" name="m3q2" value="c"> C) Write a short, rhyming poem about a playful kitten.</label><br>
+                        <button onclick="checkAnswer(\'m3q2\', \'c\', \'feedback-m3-q2\')">Check Answer</button>
+                        <p id="feedback-m3-q2" style="font-weight: bold;"></p>
+                    </div>               </div>
+                 <div class="chat-sim">
+                    <h4>Chat with Sparky!</h4>
+                    <div id="chat-m3" style="border: 1px solid #ccc; padding: 10px; height: 150px; overflow-y: scroll; margin-bottom: 10px; background-color: #f9f9f9;">
+                        <p><strong>Sparky:</strong> Try asking me to explain photosynthesis acting as a cheerful robot!</p>
+                        <!-- Chat messages will appear here -->
+                    </div>
+                    <input type="text" id="chat-input-m3" placeholder="Your prompt for Sparky..." style="width: 70%; padding: 8px;">
+                    <button onclick="sendChatMessage(\'m3\')">Send Prompt</button>
+                </div>
+            </section>
+
+            <hr>
+
+            <section class="summary">
+                <h3>Quick Recap!</h3>
+                <p>Wow, you're becoming a prompt master! You learned some super useful tricks to get even better results from AI.</p>
+                <ul>
+                    <li>Tell the AI who to be ("Act as a...").</li>
+                    <li>Set the mood by defining the tone.</li>
+                    <li>Ask for specific formats (lists, poems, etc.).</li>
+                    <li>Ask follow-up questions (iterate) to improve answers.</li>
+                </ul>
+            </section>
+
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Prompt Power Course. Let's learn together!</p>
+    </footer>
+
+    <script src="js/scripts.js"></script>
+
+</body>
+</html>

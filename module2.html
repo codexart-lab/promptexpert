@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompt Power! - Module 2: First Prompts</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Prompt Power! Your Guide to Talking to AI</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="module1.html" class="">Module 1: What's AI?</a></li>
+            <li><a href="module2.html" class="active">Module 2: First Prompts</a></li>
+            <li><a href="module3.html" class="">Module 3: Supercharging</a></li>
+            <li><a href="module4.html" class="">Module 4: Prompts in the Wild</a></li>
+            <li><a href="module5.html" class="">Module 5: You're a Pro!</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <main>
+            <h2>Module 2: Your First Prompts - Giving Clear Instructions</h2>
+
+            <section class="learning-objectives">
+                <h3>What You'll Learn:</h3>
+                <ul>
+                    <li>Learn basic prompt parts (task, context, examples).</li>
+                    <li>Understand why specific details matter.</li>
+                    <li>Practice writing simple prompts.</li>
+                </ul>
+            </section>
+
+            <hr>
+
+            <section class="storyline">
+                <p><strong>Story Time:</strong> Sparky is back! Remember how AI needs clear instructions? Let\"s learn how to give Sparky exactly what it needs so it doesn\"t get confused. Think of it like ordering the perfect pizza!</p>
+                <img src=\"images/sparky_mascot_candidate.jpeg\" alt=\"Sparky the AI Mascot\" style=\"width: 100px; float: left; margin: 0 15px 10px 0; border-radius: 50%;\">           </section>
+
+            <section class="content">
+                <h3>Let's Dive In!</h3>
+                <p>If you just told a pizza place "Make pizza", you might get anything! Cheese? Pepperoni? Pineapple? Who knows! But if you say, "Make one large pizza with pepperoni, mushrooms, and extra cheese," you'll get exactly what you crave. Prompts work the same way. The more details you give, the better the result!</p>
+                <p>Good prompts often have a few key ingredients: 
+                    <ul>
+                        <li><strong>The Task (DO):</strong> What do you want the AI to *do*? (e.g., 'Write', 'Summarize', 'Explain', 'Draw')</li>
+                        <li><strong>The Context (INFO):</strong> What important details does the AI need to know? (e.g., 'a story about a brave knight', 'for a 7th grader', 'in a happy tone')</li>
+                        <li><strong>Examples (EXAMPLE):</strong> Sometimes showing an example helps! (e.g., 'like this poem: Roses are red...')</li>
+                    </ul>
+                Let's compare! A weak prompt: "Write story." A better prompt: "Write a short, funny story about a cat who learns to fly." See the difference? The second one gives the AI much more to work with!</p>
+            </section>
+
+            <section class="interactive-elements">
+                <h3>Try It Out!</h3>
+                <div class="quiz"                    <h4>Quick Quiz: Prompt Parts</h4>
+                    <div id="quiz-m2-q1">
+                        <p>Prompt: "Write a short, funny story about a cat who learns to fly."</p>
+                        <p><strong>Question 1:</strong> What is the TASK?</p>
+                        <label><input type="radio" name="m2q1" value="write"> Write a story</label><br>
+                        <label><input type="radio" name="m2q1" value="cat"> A cat who learns to fly</label><br>
+                        <label><input type="radio" name="m2q1" value="funny"> Funny</label><br>
+                        <button onclick="checkAnswer(\'m2q1\', \'write\', \'feedback-m2-q1\')">Check Answer</button>
+                        <p id="feedback-m2-q1" style="font-weight: bold;"></p>
+                    </div>
+                    <div id="quiz-m2-q2" style="margin-top: 15px;">
+                         <p><strong>Question 2:</strong> What is the main CONTEXT/INFO?</p>
+                        <label><input type="radio" name="m2q2" value="write"> Write a story</label><br>
+                        <label><input type="radio" name="m2q2" value="cat"> About a cat who learns to fly</label><br>
+                        <label><input type="radio" name="m2q2" value="short"> Short and funny</label><br>
+                        <button onclick="checkAnswer(\'m2q2\', \'cat\', \'feedback-m2-q2\')">Check Answer</button>
+                        <p id="feedback-m2-q2" style="font-weight: bold;"></p>
+                    </div>
+                </div>
+                <div class="fill-blanks"                    <h4>Fix the Prompt!</h4>
+                    <p>Improve this weak prompt: "Tell me about dogs."</p>
+                    <p>Your improved prompt:</p>
+                    <textarea id="m2-fix-prompt" rows="3" style="width: 90%; padding: 5px;" placeholder="Add details! What do you want to know about dogs?"></textarea><br>
+                    <button onclick="checkFixPrompt(\'m2-fix-prompt\', \'feedback-m2-fix\')" style="margin-top: 5px;">Check My Prompt</button>
+                    <p id="feedback-m2-fix" style="font-weight: bold;"></p>
+                </div>
+                 <div class="chat-sim">
+                    <h4>Chat with Sparky!</h4>
+                    <div id="chat-m2" style="border: 1px solid #ccc; padding: 10px; height: 150px; overflow-y: scroll; margin-bottom: 10px; background-color: #f9f9f9;">
+                        <p><strong>Sparky:</strong> Try giving me a simple prompt! What should I write about?</p>
+                        <!-- Chat messages will appear here -->
+                    </div>
+                    <input type="text" id="chat-input-m2" placeholder="Your prompt for Sparky..." style="width: 70%; padding: 8px;">
+                    <button onclick="sendChatMessage(\'m2\')">Send Prompt</button>
+                </div>
+            </section>
+
+            <hr>
+
+            <section class="summary">
+                <h3>Quick Recap!</h3>
+                <p>Great work! You're learning how to craft clearer prompts. Remember the pizza analogy - details make the difference!</p>
+                <ul>
+                    <li>Good prompts tell the AI what to DO.</li>
+                    <li>They give important INFO (context).</li>
+                    <li>Sometimes, an EXAMPLE helps too.</li>
+                    <li>More details = better results!</li>
+                </ul>
+            </section>
+
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Prompt Power Course. Let's learn together!</p>
+    </footer>
+
+    <script src="js/scripts.js"></script>
+
+</body>
+</html>
