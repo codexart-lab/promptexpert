@@ -1,0 +1,8 @@
+Prompt Engineering Course - Todo List001 clarify_requirements_with_user()
+002 create_course_structure_and_outline()
+003 design_html_template_with_navigation()
+004 develop_module_content()
+005 create_interactive_element()
+006 implement_visual_assets()
+007 assemble_and_test_course()
+008 deliver_final_course_to_user()
