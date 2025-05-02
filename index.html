@@ -2,10 +2,264 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0; url=module1.html">
-    <title>Redirecting to Prompt Power Course...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompt Engineering for Young Learners</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f0f9ff;
+            color: #1e3a8a;
+            font-family: 'Comic Sans MS', 'Chalkboard SE', 'Arial', sans-serif;
+        }
+        .hero-section {
+            background: linear-gradient(135deg, #a5f3fc 0%, #7dd3fc 100%);
+            border-radius: 20px;
+        }
+        .module-card {
+            transition: transform 0.3s ease;
+            border-radius: 15px;
+        }
+        .module-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .module-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        .robot-thinking {
+            animation: thinking 3s infinite;
+        }
+        @keyframes thinking {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .cloud-bubble {
+            position: relative;
+            background: #fff;
+            border-radius: 20px;
+            padding: 20px;
+        }
+        .cloud-bubble:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 25%;
+            width: 0;
+            height: 0;
+            border: 15px solid transparent;
+            border-top-color: #fff;
+            border-bottom: 0;
+            margin-left: -15px;
+            margin-bottom: -15px;
+        }
+    </style>
 </head>
-<body>
-    <p>If you are not redirected automatically, follow this <a href="module1.html">link to the course</a>.</p>
+<body class="min-h-screen p-6">
+    <div class="container mx-auto max-w-6xl">
+        <!-- Header -->
+        <header class="text-center py-8">
+            <h1 class="text-5xl font-bold text-blue-700 mb-2">Prompt Engineering for Young Explorers</h1>
+            <p class="text-2xl text-blue-500">Discover the Magic of Talking to AI!</p>
+        </header>
+
+        <!-- Hero Section -->
+        <div class="hero-section p-8 my-10 text-center flex flex-col md:flex-row items-center justify-between">
+            <div class="md:w-1/2 mb-8 md:mb-0">
+                <h2 class="text-3xl font-bold mb-4">Welcome to Your AI Adventure!</h2>
+                <p class="text-xl mb-6">Are you ready to learn how to talk to robots and make them understand exactly what you want? Join us on this exciting journey!</p>
+                <div class="bg-yellow-100 p-4 rounded-lg border-2 border-yellow-300">
+                    <p class="text-lg font-bold text-yellow-700">No coding experience needed! Just bring your curiosity and imagination!</p>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="relative">
+                    <i class="fas fa-robot text-blue-600 text-9xl robot-thinking"></i>
+                    <div class="cloud-bubble mt-4 ml-12">
+                        <p class="text-lg text-gray-700">Hi there! I'm excited to learn with you!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- What You'll Learn Section -->
+        <div class="bg-white rounded-2xl p-8 my-10 shadow-lg">
+            <h2 class="text-3xl font-bold mb-6 text-center text-purple-700">What is Prompt Engineering?</h2>
+            <div class="text-lg space-y-4">
+                <p>Imagine you have a super-smart robot friend who wants to help you, but it can only do what you tell it to do. <strong>Prompt engineering</strong> is learning how to talk to this robot friend in a way that helps it understand exactly what you want!</p>
+                <p>Just like giving directions to someone who's never been to your house before, you need to be clear and specific when talking to AI. In this course, you'll discover the secrets to becoming an AI communication expert!</p>
+            </div>
+            
+            <div class="mt-8 bg-purple-100 p-6 rounded-xl">
+                <h3 class="text-2xl font-bold mb-4 text-purple-700">In This Course, You Will:</h3>
+                <ul class="list-none space-y-3">
+                    <li class="flex items-start">
+                        <i class="fas fa-star text-yellow-500 mr-3 mt-1"></i>
+                        <span>Learn how AI chatbots work and think</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-star text-yellow-500 mr-3 mt-1"></i>
+                        <span>Discover how to write clear instructions that AI can understand</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-star text-yellow-500 mr-3 mt-1"></i>
+                        <span>Practice creating amazing stories, art, and projects with AI</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-star text-yellow-500 mr-3 mt-1"></i>
+                        <span>Become a problem-solver using AI as your assistant</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-star text-yellow-500 mr-3 mt-1"></i>
+                        <span>Learn about using AI safely and responsibly</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Course Modules -->
+        <h2 class="text-3xl font-bold text-center my-10 text-green-700">Your Learning Adventure Map</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            <!-- Module 1 -->
+            <div class="module-card bg-red-100 p-6 flex flex-col items-center text-center shadow-md">
+                <i class="fas fa-robot module-icon text-red-500"></i>
+                <h3 class="text-xl font-bold mb-2">Module 1</h3>
+                <h4 class="text-lg font-semibold mb-3">Meet the AI</h4>
+                <p>Discover what AI is, how it works, and why learning to talk to it matters!</p>
+            </div>
+
+            <!-- Module 2 -->
+            <div class="module-card bg-blue-100 p-6 flex flex-col items-center text-center shadow-md">
+                <i class="fas fa-comments module-icon text-blue-500"></i>
+                <h3 class="text-xl font-bold mb-2">Module 2</h3>
+                <h4 class="text-lg font-semibold mb-3">The Basics of Prompting</h4>
+                <p>Learn the building blocks of talking to AI and giving it clear instructions.</p>
+            </div>
+
+            <!-- Module 3 -->
+            <div class="module-card bg-green-100 p-6 flex flex-col items-center text-center shadow-md">
+                <i class="fas fa-magic module-icon text-green-500"></i>
+                <h3 class="text-xl font-bold mb-2">Module 3</h3>
+                <h4 class="text-lg font-semibold mb-3">Creating Better Prompts</h4>
+                <p>Level up your skills with techniques to make your prompts super effective!</p>
+            </div>
+
+            <!-- Module 4 -->
+            <div class="module-card bg-yellow-100 p-6 flex flex-col items-center text-center shadow-md">
+                <i class="fas fa-paint-brush module-icon text-yellow-600"></i>
+                <h3 class="text-xl font-bold mb-2">Module 4</h3>
+                <h4 class="text-lg font-semibold mb-3">Creative Projects</h4>
+                <p>Use AI to create amazing stories, art, and solve fun problems!</p>
+            </div>
+
+            <!-- Module 5 -->
+            <div class="module-card bg-purple-100 p-6 flex flex-col items-center text-center shadow-md">
+                <i class="fas fa-question-circle module-icon text-purple-500"></i>
+                <h3 class="text-xl font-bold mb-2">Module 5</h3>
+                <h4 class="text-lg font-semibold mb-3">Asking Smart Questions</h4>
+                <p>Learn how to ask the right questions to get the answers you really need.</p>
+            </div>
+
+            <!-- Module 6 -->
+            <div class="module-card bg-pink-100 p-6 flex flex-col items-center text-center shadow-md">
+                <i class="fas fa-shield-alt module-icon text-pink-500"></i>
+                <h3 class="text-xl font-bold mb-2">Module 6</h3>
+                <h4 class="text-lg font-semibold mb-3">Using AI Safely</h4>
+                <p>Discover how to use AI responsibly and protect your privacy.</p>
+            </div>
+        </div>
+
+        <!-- How the Course Works -->
+        <div class="bg-indigo-100 rounded-2xl p-8 my-10 shadow-lg">
+            <h2 class="text-3xl font-bold mb-6 text-center text-indigo-700">How This Course Works</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-5 rounded-xl shadow">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-gamepad text-3xl text-indigo-500 mr-4"></i>
+                        <h3 class="text-xl font-bold">Learn by Doing</h3>
+                    </div>
+                    <p>Each lesson has fun activities and games to help you practice what you learn. You'll be talking to AI and completing cool challenges right away!</p>
+                </div>
+                
+                <div class="bg-white p-5 rounded-xl shadow">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-trophy text-3xl text-indigo-500 mr-4"></i>
+                        <h3 class="text-xl font-bold">Earn Badges</h3>
+                    </div>
+                    <p>Complete quizzes and activities to collect special badges that show off your AI communication skills!</p>
+                </div>
+                
+                <div class="bg-white p-5 rounded-xl shadow">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-users text-3xl text-indigo-500 mr-4"></i>
+                        <h3 class="text-xl font-bold">Share Your Creations</h3>
+                    </div>
+                    <p>Create amazing projects with AI and share them with friends and family to show what you've learned!</p>
+                </div>
+                
+                <div class="bg-white p-5 rounded-xl shadow">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-graduation-cap text-3xl text-indigo-500 mr-4"></i>
+                        <h3 class="text-xl font-bold">Become an AI Expert</h3>
+                    </div>
+                    <p>By the end of the course, you'll have super skills for working with AI that will help you in school and beyond!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Get Started Button -->
+        <div class="text-center my-12">
+            <button class="bg-gradient-to-r from-blue-500 to-purple-600 text-white text-2xl font-bold py-4 px-10 rounded-full shadow-lg hover:shadow-xl transform transition hover:-translate-y-1">
+                Start Your Adventure!
+            </button>
+            <p class="mt-4 text-lg text-gray-600">Click to begin with Module 1: Meet the AI</p>
+        </div>
+
+        <!-- Fun Facts Section -->
+        <div class="bg-orange-100 rounded-2xl p-8 my-10 shadow-lg">
+            <h2 class="text-3xl font-bold mb-6 text-center text-orange-700">Fun Facts About AI</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white p-5 rounded-xl shadow flex items-start">
+                    <i class="fas fa-lightbulb text-3xl text-yellow-500 mr-4 mt-1"></i>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">AI Learns From Examples</h3>
+                        <p>Just like you learn from your teachers and books, AI learns from millions of examples of human writing and conversations!</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-5 rounded-xl shadow flex items-start">
+                    <i class="fas fa-brain text-3xl text-pink-500 mr-4 mt-1"></i>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">Pattern Masters</h3>
+                        <p>AI is super good at finding patterns - that's how it can predict what word might come next when you're writing!</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-5 rounded-xl shadow flex items-start">
+                    <i class="fas fa-clock text-3xl text-blue-500 mr-4 mt-1"></i>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">Always Learning</h3>
+                        <p>Modern AI models are trained on billions of words and can take weeks of computer time to learn all that information!</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-5 rounded-xl shadow flex items-start">
+                    <i class="fas fa-globe text-3xl text-green-500 mr-4 mt-1"></i>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">Multilingual Masters</h3>
+                        <p>Many AI systems can understand and communicate in more than 100 different languages!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center mt-16 mb-8 text-gray-600">
+            <p class="text-lg">Created with ❤️ for young learners everywhere</p>
+            <p class="mt-2">© 2023 Prompt Engineering for Young Explorers</p>
+        </footer>
+    </div>
 </body>
 </html>
