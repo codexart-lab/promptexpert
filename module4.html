@@ -3,93 +3,750 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prompt Power! - Module 4: Prompts in the Wild</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Module 4: Creative Writing with AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: #f0f9ff;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover {
+            transform: scale(1.05);
+        }
+        .nav-link.active {
+            color: #3b82f6;
+            font-weight: bold;
+        }
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #3b82f6;
+            border-radius: 3px;
+        }
+        .card {
+            border-radius: 20px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .button {
+            transition: all 0.3s ease;
+        }
+        .button:hover {
+            transform: scale(1.05);
+        }
+        .quiz-option {
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .quiz-option:hover {
+            transform: translateX(10px);
+        }
+        .story-element {
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .story-element:hover {
+            transform: scale(1.05);
+        }
+        .selected {
+            border: 3px solid #3b82f6;
+            background-color: #dbeafe;
+        }
+        #storyResult {
+            min-height: 100px;
+        }
+        #aiContinuation {
+            min-height: 150px;
+        }
+        .character-img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        .module-content {
+            line-height: 1.8;
+        }
+    </style>
 </head>
 <body>
-
-    <header>
-        <h1>Prompt Power! Your Guide to Talking to AI</h1>
-    </header>
-
-    <nav>
-        <ul>
-            <li><a href="module1.html" class="">Module 1: What's AI?</a></li>
-            <li><a href="module2.html" class="">Module 2: First Prompts</a></li>
-            <li><a href="module3.html" class="">Module 3: Supercharging</a></li>
-            <li><a href="module4.html" class="active">Module 4: Prompts in the Wild</a></li>
-            <li><a href="module5.html" class="">Module 5: You're a Pro!</a></li>
-        </ul>
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-md py-4 sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="flex items-center">
+                <span class="text-2xl font-bold text-blue-500">Prompt Engineering for Young Learners</span>
+            </a>
+            <div class="flex space-x-6">
+                <a href="#" class="nav-link text-gray-600 hover:text-blue-500">Home</a>
+                <a href="#" class="nav-link text-gray-600 hover:text-blue-500">Module 1</a>
+                <a href="#" class="nav-link text-gray-600 hover:text-blue-500">Module 2</a>
+                <a href="#" class="nav-link text-gray-600 hover:text-blue-500">Module 3</a>
+                <a href="#" class="nav-link active text-blue-500">Module 4</a>
+                <a href="#" class="nav-link text-gray-600 hover:text-blue-500">Module 5</a>
+            </div>
+        </div>
     </nav>
 
-    <div class="container">
-        <main>
-            <h2>Module 4: Prompts in the Wild - AI for Fun & School!</h2>
+    <!-- Main Content -->
+    <div class="container mx-auto py-8">
+        <!-- Header Section -->
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-blue-600 mb-4">Module 4: Creative Writing with AI</h1>
+            <div class="flex justify-center">
+                <div class="h-2 w-20 bg-yellow-400 rounded-full"></div>
+            </div>
+            <p class="text-xl text-gray-600 mt-4">Learn how to use AI to help with storytelling and creative projects!</p>
+        </div>
 
-            <section class="learning-objectives">
-                <h3>What You'll Learn:</h3>
-                <ul>
-                    <li>See how prompts work with different kinds of AI, like ones that create text or images.</li>
-                    <li>Explore cool ways to use prompts for creative things like writing stories or brainstorming ideas.</li>
-                    <li>Learn about using AI responsibly – like checking facts and being original.</li>
-                </ul>
-            </section>
+        <!-- Learning Objectives -->
+        <div class="bg-gradient-to-r from-blue-100 to-purple-100 rounded-3xl p-6 mb-12 shadow-lg">
+            <h2 class="text-2xl font-bold text-blue-700 mb-4">Learning Objectives</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="flex items-start">
+                    <div class="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>Learn how to create prompts for storytelling and creative writing</p>
+                </div>
+                <div class="flex items-start">
+                    <div class="bg-green-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0">
+                        <i class="fas fa-pen"></i>
+                    </div>
+                    <p>Understand how to generate story ideas using AI assistance</p>
+                </div>
+                <div class="flex items-start">
+                    <div class="bg-purple-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <p>Practice creating collaborative stories with AI</p>
+                </div>
+                <div class="flex items-start">
+                    <div class="bg-yellow-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <p>Develop your own unique story starters using prompt templates</p>
+                </div>
+            </div>
+        </div>
 
-            <hr>
-
-            <section class="storyline">
-                <p><strong>Story Time:</strong> You\"ve got amazing prompt skills now! Sparky wants to show you how these skills can be used for all sorts of cool stuff, both for fun and for school projects. Let\"s see prompts in action out in the real world!</p>
-                <img src=\"images/sparky_mascot_candidate.jpeg\" alt=\"Sparky the AI Mascot\" style=\"width: 100px; float: right; margin: 0 0 10px 10px; border-radius: 50%;\">           </section>
-
-            <section class="content">
-                <h3>Let's Dive In!</h3>
-                <p>Your prompts aren't just for simple chats! You can use them with AI that writes stories, explains homework topics, or even helps you come up with ideas for drawings or pictures! Imagine asking an AI: "Give me five ideas for a science fiction story set on Mars" or "Write a prompt for an image generator to create a picture of a cute, fluffy robot dog playing in a field of flowers." Your prompt skills work for many types of AI!</p>
-                <p>Using AI can be super helpful for schoolwork (like brainstorming ideas for an essay) or just for fun (like creating characters for a game). But remember, AI is a tool, like a super-powered calculator. It's awesome, but it's not always perfect and it doesn't replace your own thinking!</p>
-                <p>It's super important to use AI responsibly. Think of it like using superpowers – you need to be careful! 
-                    <ul>
-                        <li><strong>Check the Facts:</strong> Sometimes AI makes mistakes. If you use AI for homework help, always double-check the information it gives you with your textbook or teacher.</li>
-                        <li><strong>Be Original:</strong> Don't just copy and paste what the AI gives you and call it your own work. Use it for ideas and inspiration, but always write things in your own words.</li>
+        <!-- Intro to Creative Writing with AI -->
+        <div class="bg-white rounded-3xl p-8 mb-12 shadow-lg module-content">
+            <h2 class="text-3xl font-bold text-purple-600 mb-6">Creative Writing with AI</h2>
+            
+            <div class="mb-8">
+                <p class="text-lg mb-4">Have you ever had trouble coming up with ideas for a story? Or maybe you started writing but got stuck in the middle? This is where AI can be a super helpful friend for your creative writing!</p>
+                
+                <p class="text-lg mb-4">When we write stories with AI, we're using prompt engineering in a fun and creative way. Instead of just asking for information, we're asking the AI to help us create something new and exciting!</p>
+                
+                <div class="bg-yellow-100 border-l-4 border-yellow-500 p-4 my-6">
+                    <p class="text-md italic">Think of AI as your creative writing buddy who can help you brainstorm ideas, suggest what happens next in your story, or even help you create interesting characters!</p>
+                </div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row gap-6 items-center mb-8">
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-bold text-blue-500 mb-4">Why Use AI for Creative Writing?</h3>
+                    <ul class="list-disc pl-6 space-y-2">
+                        <li>AI can help when you have <span class="font-bold text-purple-500">writer's block</span></li>
+                        <li>It can suggest <span class="font-bold text-purple-500">unexpected plot twists</span> you might not think of</li>
+                        <li>AI can help you create <span class="font-bold text-purple-500">detailed characters</span> and worlds</li>
+                        <li>It's like having a writing partner who's available anytime</li>
+                        <li>You can learn new writing styles and techniques</li>
                     </ul>
-                Using AI smartly and honestly is key!</p>
-            </section>
-
-            <section class="interactive-elements">
-                <h3>Try It Out!</h3>
-                <div class="mini-project">
-                    <h4>Project Idea!</h4>
-                    <p>Think about a school project or a story you want to write. Try brainstorming some prompts you could use to get ideas from an AI! <em>(No actual AI needed, just practice writing the prompts!)</em></p>
                 </div>
-                <div class="quiz">
-                    <h4>Image Prompt Challenge!</h4>
-                    <p><em>(Interactive 'Write a prompt for this image' multiple-choice quiz coming soon!)</em></p>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="bg-purple-100 p-6 rounded-xl shadow-md max-w-sm">
+                        <h4 class="text-xl font-bold text-purple-600 mb-2">Remember!</h4>
+                        <p class="text-md">The AI is your helper, not your replacement! Your creativity, ideas, and voice are what make your stories special. AI is just a tool to help you express yourself better.</p>
+                    </div>
                 </div>
-                 <div class="quiz">
-                    <h4>True or False?</h4>
-                    <p><em>(Interactive 'Responsible AI Use' True/False quiz coming soon!)</em></p>
+            </div>
+        </div>
+
+        <!-- Story Prompt Examples -->
+        <div class="bg-gradient-to-r from-indigo-100 to-pink-100 rounded-3xl p-8 mb-12 shadow-lg module-content">
+            <h2 class="text-3xl font-bold text-indigo-600 mb-6">Story Prompt Examples</h2>
+            
+            <p class="text-lg mb-6">Here are some examples of creative writing prompts you can use with AI. These are like special questions that tell the AI exactly what kind of story you want to create!</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div class="bg-white rounded-xl p-5 shadow-md">
+                    <h3 class="text-xl font-bold text-pink-500 mb-2">Basic Story Starter</h3>
+                    <div class="bg-gray-100 p-3 rounded-lg text-sm font-mono">
+                        Write a short story about a kid who discovers a secret door in their school library.
+                    </div>
                 </div>
-            </section>
+                
+                <div class="bg-white rounded-xl p-5 shadow-md">
+                    <h3 class="text-xl font-bold text-pink-500 mb-2">Character Creation</h3>
+                    <div class="bg-gray-100 p-3 rounded-lg text-sm font-mono">
+                        Create a character profile for a 12-year-old inventor who lives in a small town. Include their personality, hobbies, and a special invention they created.
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl p-5 shadow-md">
+                    <h3 class="text-xl font-bold text-pink-500 mb-2">Setting Description</h3>
+                    <div class="bg-gray-100 p-3 rounded-lg text-sm font-mono">
+                        Describe an underwater city where people have learned to breathe underwater. What does it look like? What makes it special?
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl p-5 shadow-md">
+                    <h3 class="text-xl font-bold text-pink-500 mb-2">Detailed Story Prompt</h3>
+                    <div class="bg-gray-100 p-3 rounded-lg text-sm font-mono">
+                        Write a story about two friends who find a map that leads to a treasure. Set the story in a snowy mountain. Include a surprise twist where the treasure isn't what they expected.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-xl p-6 shadow-md">
+                <h3 class="text-xl font-bold text-indigo-600 mb-4">Strong vs. Weak Story Prompts</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-bold text-red-500 mb-2">Weak Prompt:</h4>
+                        <div class="bg-red-100 p-3 rounded-lg mb-2 text-sm">
+                            Write a story.
+                        </div>
+                        <p class="text-sm text-gray-600">This prompt is too vague! The AI doesn't know what kind of story you want.</p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-bold text-green-500 mb-2">Strong Prompt:</h4>
+                        <div class="bg-green-100 p-3 rounded-lg mb-2 text-sm">
+                            Write a funny adventure story about a 7th grader who accidentally switches backpacks with a famous movie star. Set the story over one school day and include how they solve the mix-up.
+                        </div>
+                        <p class="text-sm text-gray-600">This prompt is specific and gives the AI clear guidance!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-            <hr>
+        <!-- Interactive Story Starter Generator -->
+        <div class="bg-white rounded-3xl p-8 mb-12 shadow-lg module-content">
+            <h2 class="text-3xl font-bold text-green-600 mb-6">Story Starter Generator</h2>
+            
+            <p class="text-lg mb-6">Let's create your own unique story starter! Choose one element from each category below to mix and match into a creative story idea:</p>
+            
+            <div class="mb-8">
+                <h3 class="text-xl font-bold text-green-500 mb-4">1. Choose a Character</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                    <div class="story-element p-4 bg-blue-100 rounded-xl text-center cursor-pointer" onclick="selectElement('character', this)">
+                        <p class="font-bold">A young wizard</p>
+                    </div>
+                    <div class="story-element p-4 bg-blue-100 rounded-xl text-center cursor-pointer" onclick="selectElement('character', this)">
+                        <p class="font-bold">A curious robot</p>
+                    </div>
+                    <div class="story-element p-4 bg-blue-100 rounded-xl text-center cursor-pointer" onclick="selectElement('character', this)">
+                        <p class="font-bold">A shy superhero</p>
+                    </div>
+                    <div class="story-element p-4 bg-blue-100 rounded-xl text-center cursor-pointer" onclick="selectElement('character', this)">
+                        <p class="font-bold">A talking animal</p>
+                    </div>
+                </div>
+                
+                <h3 class="text-xl font-bold text-green-500 mb-4">2. Choose a Setting</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                    <div class="story-element p-4 bg-purple-100 rounded-xl text-center cursor-pointer" onclick="selectElement('setting', this)">
+                        <p class="font-bold">A floating island</p>
+                    </div>
+                    <div class="story-element p-4 bg-purple-100 rounded-xl text-center cursor-pointer" onclick="selectElement('setting', this)">
+                        <p class="font-bold">A futuristic city</p>
+                    </div>
+                    <div class="story-element p-4 bg-purple-100 rounded-xl text-center cursor-pointer" onclick="selectElement('setting', this)">
+                        <p class="font-bold">An enchanted forest</p>
+                    </div>
+                    <div class="story-element p-4 bg-purple-100 rounded-xl text-center cursor-pointer" onclick="selectElement('setting', this)">
+                        <p class="font-bold">An underwater school</p>
+                    </div>
+                </div>
+                
+                <h3 class="text-xl font-bold text-green-500 mb-4">3. Choose a Problem</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                    <div class="story-element p-4 bg-pink-100 rounded-xl text-center cursor-pointer" onclick="selectElement('problem', this)">
+                        <p class="font-bold">Lost a magical object</p>
+                    </div>
+                    <div class="story-element p-4 bg-pink-100 rounded-xl text-center cursor-pointer" onclick="selectElement('problem', this)">
+                        <p class="font-bold">Accidentally time-traveled</p>
+                    </div>
+                    <div class="story-element p-4 bg-pink-100 rounded-xl text-center cursor-pointer" onclick="selectElement('problem', this)">
+                        <p class="font-bold">Made an enemy invisible</p>
+                    </div>
+                    <div class="story-element p-4 bg-pink-100 rounded-xl text-center cursor-pointer" onclick="selectElement('problem', this)">
+                        <p class="font-bold">Switched bodies with someone</p>
+                    </div>
+                </div>
+                
+                <h3 class="text-xl font-bold text-green-500 mb-4">4. Choose a Special Element</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                    <div class="story-element p-4 bg-yellow-100 rounded-xl text-center cursor-pointer" onclick="selectElement('element', this)">
+                        <p class="font-bold">A mysterious map</p>
+                    </div>
+                    <div class="story-element p-4 bg-yellow-100 rounded-xl text-center cursor-pointer" onclick="selectElement('element', this)">
+                        <p class="font-bold">A talking pet</p>
+                    </div>
+                    <div class="story-element p-4 bg-yellow-100 rounded-xl text-center cursor-pointer" onclick="selectElement('element', this)">
+                        <p class="font-bold">A secret power</p>
+                    </div>
+                    <div class="story-element p-4 bg-yellow-100 rounded-xl text-center cursor-pointer" onclick="selectElement('element', this)">
+                        <p class="font-bold">A magical device</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mb-6">
+                <button id="generateButton" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-full shadow-lg button">
+                    Generate My Story Starter!
+                </button>
+            </div>
+            
+            <div class="bg-green-100 p-6 rounded-xl shadow-md">
+                <h3 class="text-xl font-bold text-green-700 mb-4">Your Story Starter:</h3>
+                <div id="storyResult" class="bg-white p-4 rounded-lg min-h-20 text-lg">
+                    Your story starter will appear here after you make your choices and click the button above!
+                </div>
+                <div class="mt-4 text-gray-600 italic text-sm">
+                    <p>Now you can use this story starter as a prompt for AI to help you develop a complete story!</p>
+                </div>
+            </div>
+        </div>
 
-            <section class="summary">
-                <h3>Quick Recap!</h3>
-                <p>You're seeing how powerful prompts can be! They work with different AIs and can help with school and creative projects. Just remember to use AI wisely!</p>
-                <ul>
-                    <li>Prompts can be used for text, image, and other types of AI.</li>
-                    <li>AI is great for brainstorming and getting ideas.</li>
-                    <li>Always check AI facts and do your own work (be original!).</li>
-                    <li>Use AI responsibly!</li>
+        <!-- Collaborative Storytelling with AI -->
+        <div class="bg-gradient-to-r from-yellow-100 to-orange-100 rounded-3xl p-8 mb-12 shadow-lg module-content">
+            <h2 class="text-3xl font-bold text-orange-600 mb-6">Collaborative Storytelling with AI</h2>
+            
+            <p class="text-lg mb-6">One of the coolest ways to use AI for creative writing is to write a story together! You start the story, and then ask the AI to continue it. Then you can add more, and the AI can add more – like a game of story tag!</p>
+            
+            <div class="bg-white rounded-xl p-6 shadow-md mb-8">
+                <h3 class="text-xl font-bold text-orange-500 mb-4">How It Works:</h3>
+                
+                <div class="flex flex-col md:flex-row gap-6">
+                    <div class="md:w-1/3 bg-blue-100 p-4 rounded-lg">
+                        <div class="text-center mb-2">
+                            <div class="inline-block bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center">
+                                1
+                            </div>
+                        </div>
+                        <p class="text-center">You write the beginning of a story (1-3 sentences)</p>
+                    </div>
+                    <div class="md:w-1/3 bg-purple-100 p-4 rounded-lg">
+                        <div class="text-center mb-2">
+                            <div class="inline-block bg-purple-500 text-white rounded-full w-8 h-8 flex items-center justify-center">
+                                2
+                            </div>
+                        </div>
+                        <p class="text-center">Ask the AI to continue the story for a few sentences</p>
+                    </div>
+                    <div class="md:w-1/3 bg-pink-100 p-4 rounded-lg">
+                        <div class="text-center mb-2">
+                            <div class="inline-block bg-pink-500 text-white rounded-full w-8 h-8 flex items-center justify-center">
+                                3
+                            </div>
+                        </div>
+                        <p class="text-center">You read what the AI wrote and continue the story yourself!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mb-8">
+                <h3 class="text-xl font-bold text-orange-500 mb-4">Example of Collaborative Storytelling:</h3>
+                
+                <div class="bg-white rounded-xl p-6 shadow-md">
+                    <div class="border-l-4 border-blue-500 pl-4 mb-4">
+                        <p class="font-bold text-blue-600">YOU:</p>
+                        <p>Max discovered a glowing blue rock in his backyard while digging for buried treasure. When he picked it up, it felt warm in his hand and seemed to pulse with energy.</p>
+                    </div>
+                    
+                    <div class="border-l-4 border-green-500 pl-4 mb-4">
+                        <p class="font-bold text-green-600">AI:</p>
+                        <p>Suddenly, the rock began to hover above Max's palm, spinning slowly in the air. A tiny voice, no louder than a whisper, came from the rock: "Finally, after a thousand years, someone brave has found me!" Max nearly dropped the rock in surprise but managed to keep his cool.</p>
+                    </div>
+                    
+                    <div class="border-l-4 border-blue-500 pl-4 mb-4">
+                        <p class="font-bold text-blue-600">YOU:</p>
+                        <p>"Who... who are you?" Max stuttered, looking around to make sure his little sister wasn't playing a trick on him. The rock glowed brighter in response.</p>
+                    </div>
+                    
+                    <div class="border-l-4 border-green-500 pl-4">
+                        <p class="font-bold text-green-600">AI:</p>
+                        <p>"I am Azurite, guardian of the lost kingdom of Crystalia," the voice explained. "And you, young human, have just been chosen for an extraordinary adventure. Look up at the sky." Max tilted his head back and gasped. The clouds above were forming a swirling pattern, and in the center, a doorway made of light was beginning to open.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-xl p-6 shadow-md">
+                <h3 class="text-xl font-bold text-orange-600 mb-4">Try It Yourself!</h3>
+                <p class="mb-4">Write the beginning of a story below (imagine you're talking to an AI):</p>
+                
+                <textarea id="userStory" class="w-full p-4 border border-gray-300 rounded-lg mb-4" rows="3" placeholder="Once upon a time..."></textarea>
+                
+                <div class="mb-6">
+                    <button id="continueButton" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-lg shadow button">
+                        See How AI Might Continue Your Story
+                    </button>
+                </div>
+                
+                <div class="border-l-4 border-green-500 pl-4 bg-green-50 p-4 rounded-r-lg">
+                    <p class="font-bold text-green-600">AI Might Continue It Like:</p>
+                    <div id="aiContinuation" class="mt-2">
+                        (Your AI story continuation will appear here after you write your beginning and click the button!)
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tips for Creative Writing Prompts -->
+        <div class="bg-white rounded-3xl p-8 mb-12 shadow-lg module-content">
+            <h2 class="text-3xl font-bold text-red-600 mb-6">Tips for Creative Writing Prompts</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold text-red-500 mb-4">Best Practices:</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <span class="bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">✓</span>
+                            <span>Be specific about the characters, setting, and mood you want</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">✓</span>
+                            <span>Give the AI guidance on the length (short story, paragraph, etc.)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">✓</span>
+                            <span>Use specific words to set the tone (funny, spooky, exciting, etc.)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">✓</span>
+                            <span>Ask for specific story elements you want included</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">✓</span>
+                            <span>Tell the AI if you want a certain writing style (like a fairy tale or science fiction)</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold text-red-500 mb-4">Things to Avoid:</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <span class="bg-gray-500 text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">✗</span>
+                            <span>Extremely vague prompts like "Write a story" without details</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-gray-500 text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">✗</span>
+                            <span>Expecting the AI to read your mind - be clear about what you want</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-gray-500 text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">✗</span>
+                            <span>Asking for stories with too many characters or complicated plots at once</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-gray-500 text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">✗</span>
+                            <span>Forgetting to tell the AI the audience (if you want a story appropriate for your age)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-gray-500 text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">✗</span>
+                            <span>Trying to use the AI to write your homework for you (that's cheating!)</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-8 bg-yellow-100 p-6 rounded-xl">
+                <h3 class="text-xl font-bold text-yellow-600 mb-3">Using AI Responsibly for Creative Writing</h3>
+                <p class="mb-3">Remember that AI is a tool to help your creativity, not replace it. The best stories will always come from your own imagination, with AI as your helper.</p>
+                <p>Always review what the AI writes and make changes to match your own voice and ideas. And never claim AI-written content as completely your own work for school assignments!</p>
+            </div>
+        </div>
+
+        <!-- Fun Activity: AI Story Challenge -->
+        <div class="bg-gradient-to-r from-pink-100 to-red-100 rounded-3xl p-8 mb-12 shadow-lg module-content">
+            <h2 class="text-3xl font-bold text-pink-600 mb-6">Fun Activity: AI Story Challenge</h2>
+            
+            <p class="text-lg mb-6">Let's put your new prompt engineering skills to the test with this fun story challenge!</p>
+            
+            <div class="bg-white rounded-xl p-6 shadow-md mb-8">
+                <h3 class="text-xl font-bold text-pink-500 mb-4">The Challenge:</h3>
+                <p class="mb-4">Create a prompt that would help an AI write a story with these elements:</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                    <div class="bg-blue-100 p-4 rounded-lg text-center">
+                        <p class="font-bold text-blue-600 mb-2">MUST INCLUDE:</p>
+                        <p>A character who is afraid of water</p>
+                    </div>
+                    <div class="bg-purple-100 p-4 rounded-lg text-center">
+                        <p class="font-bold text-purple-600 mb-2">MUST INCLUDE:</p>
+                        <p>An underwater adventure</p>
+                    </div>
+                    <div class="bg-green-100 p-4 rounded-lg text-center">
+                        <p class="font-bold text-green-600 mb-2">MUST INCLUDE:</p>
+                        <p>A helpful sea creature</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-100 p-4 rounded-lg">
+                    <p class="font-bold mb-2">Your task:</p>
+                    <p>Write a prompt that would get an AI to create this story. Remember to use all the tips you've learned about being specific and clear!</p>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-xl p-6 shadow-md">
+                <h3 class="text-xl font-bold text-pink-500 mb-4">Example Solution:</h3>
+                <div class="bg-gray-100 p-4 rounded-lg mb-4">
+                    <p class="italic">"Write a short adventure story about a 12-year-old character who has been afraid of water ever since they nearly drowned as a small child. One day, they accidentally fall into a magical whirlpool that takes them to an underwater world where they can somehow breathe underwater. Include a friendly and wise sea turtle who helps the main character overcome their fear of water and find their way back home. The story should be appropriate for middle school students and end with the character conquering their fear."</p>
+                </div>
+                <p class="text-sm text-gray-600">This prompt is specific about the character traits, plot elements, and even gives guidance on the tone and audience. You can create your own version using different details!</p>
+            </div>
+        </div>
+
+        <!-- Knowledge Check Quiz -->
+        <div class="bg-white rounded-3xl p-8 mb-12 shadow-lg module-content">
+            <h2 class="text-3xl font-bold text-blue-600 mb-6">Knowledge Check Quiz</h2>
+            
+            <p class="text-lg mb-6">Let's see what you've learned about creative writing with AI!</p>
+            
+            <div class="space-y-8">
+                <!-- Question 1 -->
+                <div class="quiz-question">
+                    <h3 class="text-xl font-bold text-blue-500 mb-4">Question 1: What makes a good creative writing prompt for AI?</h3>
+                    <div class="space-y-3">
+                        <div class="quiz-option p-3 bg-gray-100 rounded-lg" onclick="checkAnswer(this, true)">
+                            <p>A specific prompt with details about characters, setting, and plot elements</p>
+                        </div>
+                        <div class="quiz-option p-3 bg-gray-100 rounded-lg" onclick="checkAnswer(this, false)">
+                            <p>A very short prompt like "Write a story for me"</p>
+                        </div>
+                        <div class="quiz-option p-3 bg-gray-100 rounded-lg" onclick="checkAnswer(this, false)">
+                            <p>A prompt that asks the AI to write your homework</p>
+                        </div>
+                        <div class="quiz-option p-3 bg-gray-100 rounded-lg" onclick="checkAnswer(this, false)">
+                            <p>A prompt with as many characters and plot twists as possible</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Question 2 -->
+                <div class="quiz-question">
+                    <h3 class="text-xl font-bold text-blue-500 mb-4">Question 2: In collaborative storytelling with AI, what is the best approach?</h3>
+                    <div class="space-y-3">
+                        <div class="quiz-option p-3 bg-gray-100 rounded-lg" onclick="checkAnswer(this, false)">
+                            <p>Let the AI write the entire story without your input</p>
+                        </div>
+                        <div class="quiz-option p-3 bg-gray-100 rounded-lg" onclick="checkAnswer(this, false)">
+                            <p>Write the whole story yourself and just have the AI check for spelling errors</p>
+                        </div>
+                        <div class="quiz-option p-3 bg-gray-100 rounded-lg" onclick="checkAnswer(this, true)">
+                            <p>Take turns writing parts of the story with the AI, adding your own creativity</p>
+                        </div>
+                        <div class="quiz-option p-3 bg-gray-100 rounded-lg" onclick="checkAnswer(this, false)">
+                            <p>Copy someone else's story and ask the AI to change a few words</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Question 3 -->
+                <div class="quiz-question">
+                    <h3 class="text-xl font-bold text-blue-500 mb-4">Question 3: Why is it important to be specific in your creative writing prompts?</h3>
+                    <div class="space-y-3">
+                        <div class="quiz-option p-3 bg-gray-100 rounded-lg" onclick="checkAnswer(this, false)">
+                            <p>Because the AI can't write stories at all</p>
+                        </div>
+                        <div class="quiz-option p-3 bg-gray-100 rounded-lg" onclick="checkAnswer(this, false)">
+                            <p>Because specific prompts make shorter stories</p>
+                        </div>
+                        <div class="quiz-option p-3 bg-gray-100 rounded-lg" onclick="checkAnswer(this, false)">
+                            <p>Because it's easier to type long prompts</p>
+                        </div>
+                        <div class="quiz-option p-3 bg-gray-100 rounded-lg" onclick="checkAnswer(this, true)">
+                            <p>Because specific details help the AI understand exactly what kind of story you want</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Module Summary -->
+        <div class="bg-gradient-to-r from-blue-100 to-indigo-100 rounded-3xl p-8 mb-12 shadow-lg module-content">
+            <h2 class="text-3xl font-bold text-indigo-600 mb-6">Module Summary</h2>
+            
+            <p class="text-lg mb-6">Congratulations! You've completed Module 4 of the Prompt Engineering course. Let's review what you've learned:</p>
+            
+            <div class="bg-white rounded-xl p-6 shadow-md mb-8">
+                <h3 class="text-xl font-bold text-indigo-500 mb-4">Key Points We Covered:</h3>
+                
+                <ul class="space-y-3">
+                    <li class="flex items-start">
+                        <span class="text-indigo-500 mr-2">✦</span>
+                        <span>How to use AI as a creative writing partner</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-indigo-500 mr-2">✦</span>
+                        <span>Creating effective story prompts with specific details</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-indigo-500 mr-2">✦</span>
+                        <span>Using the Story Starter Generator to create unique story ideas</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-indigo-500 mr-2">✦</span>
+                        <span>Collaborative storytelling techniques with AI</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-indigo-500 mr-2">✦</span>
+                        <span>Best practices and things to avoid when writing story prompts</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-indigo-500 mr-2">✦</span>
+                        <span>How to use AI responsibly for creative writing</span>
+                    </li>
                 </ul>
-            </section>
+            </div>
+            
+            <div class="bg-indigo-200 p-6 rounded-xl shadow-md mb-8">
+                <h3 class="text-xl font-bold text-indigo-700 mb-4">What's Next?</h3>
+                <p class="mb-3">In the next module, we'll explore how to use prompt engineering for educational purposes - helping you with homework, research, and learning new subjects!</p>
+                <p>You'll learn how to ask AI to explain difficult concepts, help with studying, and even create educational games.</p>
+            </div>
+            
+            <div class="text-center">
+                <a href="#" class="inline-block bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-3 px-8 rounded-full shadow-lg button">
+                    Continue to Module 5
+                </a>
+            </div>
+        </div>
 
-        </main>
+        <!-- Navigation Buttons -->
+        <div class="flex justify-between mb-12">
+            <a href="#" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-lg flex items-center button">
+                <i class="fas fa-arrow-left mr-2"></i> Previous Module
+            </a>
+            <a href="#" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg flex items-center button">
+                Next Module <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
     </div>
 
-    <footer>
-        <p>&copy; 2025 Prompt Power Course. Let's learn together!</p>
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto text-center">
+            <p>Prompt Engineering for Young Learners - Module 4</p>
+            <p class="text-sm mt-2">Created for 7th Grade Students</p>
+        </div>
     </footer>
 
-    <script src="js/scripts.js"></script>
+    <script>
+        // Variables to track selected story elements
+        let selectedCharacter = null;
+        let selectedSetting = null;
+        let selectedProblem = null;
+        let selectedElement = null;
 
+        // Function to handle story element selection
+        function selectElement(category, element) {
+            // Remove 'selected' class from all elements in the same category
+            document.querySelectorAll(`.story-element`).forEach(el => {
+                if (el.parentElement.previousElementSibling.textContent.toLowerCase().includes(category)) {
+                    el.classList.remove('selected');
+                }
+            });
+            
+            // Add 'selected' class to the clicked element
+            element.classList.add('selected');
+            
+            // Store the selected value
+            if (category === 'character') {
+                selectedCharacter = element.textContent.trim();
+            } else if (category === 'setting') {
+                selectedSetting = element.textContent.trim();
+            } else if (category === 'problem') {
+                selectedProblem = element.textContent.trim();
+            } else if (category === 'element') {
+                selectedElement = element.textContent.trim();
+            }
+        }
+
+        // Event listener for the generate button
+        document.getElementById('generateButton').addEventListener('click', function() {
+            const storyResult = document.getElementById('storyResult');
+            
+            if (!selectedCharacter || !selectedSetting || !selectedProblem || !selectedElement) {
+                storyResult.innerHTML = "Please select one item from each category to generate your story starter!";
+                storyResult.style.color = "#e53e3e";
+                return;
+            }
+            
+            // Generate story starter text
+            const storyStarter = `Write a story about ${selectedCharacter} in ${selectedSetting} who ${selectedProblem}. Include ${selectedElement} in the story.`;
+            
+            storyResult.innerHTML = storyStarter;
+            storyResult.style.color = "#1a202c";
+        });
+
+        // Event listener for the continue story button
+        document.getElementById('continueButton').addEventListener('click', function() {
+            const userStory = document.getElementById('userStory').value.trim();
+            const aiContinuation = document.getElementById('aiContinuation');
+            
+            if (userStory.length < 10) {
+                aiContinuation.innerHTML = "Please write at least a sentence or two to start your story!";
+                aiContinuation.style.color = "#e53e3e";
+                return;
+            }
+            
+            // Simulate AI continuation based on the user's story start
+            let continuation = "";
+            
+            if (userStory.toLowerCase().includes("castle") || userStory.toLowerCase().includes("kingdom") || userStory.toLowerCase().includes("princess") || userStory.toLowerCase().includes("prince")) {
+                continuation = "The ancient castle walls seemed to whisper secrets as they walked through the corridor. Suddenly, a hidden door appeared where there had been only stone a moment before. 'I've been waiting for someone brave enough to find me,' said a voice from within the darkness.";
+            } else if (userStory.toLowerCase().includes("space") || userStory.toLowerCase().includes("alien") || userStory.toLowerCase().includes("planet")) {
+                continuation = "The spaceship's warning lights flashed red as they approached the uncharted planet. 'Captain, I'm detecting unusual energy readings,' the robot navigator announced. Just then, a beam of blue light engulfed their ship, pulling them toward the mysterious surface below.";
+            } else if (userStory.toLowerCase().includes("school") || userStory.toLowerCase().includes("classroom") || userStory.toLowerCase().includes("teacher")) {
+                continuation = "The classroom fell silent as the new substitute teacher wrote a strange symbol on the board. 'Today,' she said with a smile that seemed just a little too wide, 'we're going to learn something that isn't in your textbooks.' Her eyes glowed slightly as she dimmed the lights.";
+            } else if (userStory.toLowerCase().includes("forest") || userStory.toLowerCase().includes("woods") || userStory.toLowerCase().includes("tree")) {
+                continuation = "The trees seemed to lean in closer as they ventured deeper into the forest. A soft melody drifted through the air, and tiny lights—like fireflies but in all colors of the rainbow—began to appear around them. 'Hello, human child,' chirped a small voice from behind a mushroom.";
+            } else {
+                continuation = "What happened next was something no one could have predicted. The sky suddenly darkened as if someone had dimmed the lights of the world. A shimmering doorway appeared in the air, swirling with colors that shouldn't exist. 'Your help is needed,' said a voice that seemed to come from everywhere at once.";
+            }
+            
+            aiContinuation.innerHTML = continuation;
+            aiContinuation.style.color = "#1a202c";
+        });
+
+        // Function to handle quiz answers
+        function checkAnswer(element, isCorrect) {
+            // Remove previous styling
+            element.parentElement.querySelectorAll('.quiz-option').forEach(option => {
+                option.classList.remove('bg-green-100', 'bg-red-100');
+            });
+            
+            // Apply styling based on correctness
+            if (isCorrect) {
+                element.classList.add('bg-green-100');
+                element.innerHTML += '<p class="mt-2 text-green-600 font-bold">✓ Correct! Great job!</p>';
+            } else {
+                element.classList.add('bg-red-100');
+                element.innerHTML += '<p class="mt-2 text-red-600 font-bold">✗ Not quite. Try again!</p>';
+            }
+        }
+    </script>
 </body>
 </html>
