@@ -3,116 +3,416 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prompt Power! - Module 2: First Prompts</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Module 2: Creating Great Prompts</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: #f0f9ff;
+            color: #333;
+        }
+        .module-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .nav-link {
+            padding: 10px 15px;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+        .nav-link:hover {
+            background-color: #bae6fd;
+        }
+        .nav-link.active {
+            background-color: #0ea5e9;
+            color: white;
+        }
+        .section-card {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        .objective-item {
+            background-color: #e0f2fe;
+            border-left: 4px solid #0284c7;
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            border-radius: 0 10px 10px 0;
+        }
+        .prompt-example {
+            border: 2px dashed #0ea5e9;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+        .weak-prompt {
+            background-color: #fee2e2;
+            border-left: 4px solid #ef4444;
+        }
+        .strong-prompt {
+            background-color: #dcfce7;
+            border-left: 4px solid #22c55e;
+        }
+        .drag-container {
+            background-color: #f0f9ff;
+            border: 2px dotted #0ea5e9;
+            border-radius: 10px;
+            padding: 15px;
+            min-height: 100px;
+        }
+        .draggable {
+            background-color: #bae6fd;
+            border-radius: 8px;
+            padding: 8px 12px;
+            margin: 5px;
+            cursor: grab;
+            display: inline-block;
+            user-select: none;
+        }
+        .chat-simulator {
+            border: 2px solid #0ea5e9;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        .chat-messages {
+            height: 200px;
+            overflow-y: auto;
+            padding: 15px;
+            background-color: white;
+        }
+        .user-message {
+            background-color: #bae6fd;
+            padding: 8px 12px;
+            border-radius: 18px 18px 18px 4px;
+            margin-bottom: 10px;
+            max-width: 80%;
+            align-self: flex-end;
+            margin-left: auto;
+        }
+        .ai-message {
+            background-color: #e0f2fe;
+            padding: 8px 12px;
+            border-radius: 18px 18px 4px 18px;
+            margin-bottom: 10px;
+            max-width: 80%;
+        }
+        .quiz-option {
+            background-color: #e0f2fe;
+            border: 2px solid #0ea5e9;
+            border-radius: 10px;
+            padding: 10px 15px;
+            margin: 5px 0;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .quiz-option:hover {
+            background-color: #bae6fd;
+        }
+        .quiz-option.correct {
+            background-color: #dcfce7;
+            border-color: #22c55e;
+        }
+        .quiz-option.incorrect {
+            background-color: #fee2e2;
+            border-color: #ef4444;
+        }
+        @media (max-width: 640px) {
+            .module-container {
+                padding: 10px;
+            }
+            .section-card {
+                padding: 15px;
+            }
+        }
+    </style>
 </head>
 <body>
-
-    <header>
-        <h1>Prompt Power! Your Guide to Talking to AI</h1>
+    <header class="bg-gradient-to-r from-blue-500 to-purple-600 text-white py-4 shadow-md">
+        <div class="module-container">
+            <div class="flex justify-between items-center">
+                <h1 class="text-2xl font-bold">Prompt Engineering for Young Learners</h1>
+                <div class="hidden sm:block">
+                    <a href="#" class="text-white hover:text-blue-200 transition">
+                        <i class="fas fa-user-circle text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
     </header>
-
-    <nav>
-        <ul>
-            <li><a href="module1.html" class="">Module 1: What's AI?</a></li>
-            <li><a href="module2.html" class="active">Module 2: First Prompts</a></li>
-            <li><a href="module3.html" class="">Module 3: Supercharging</a></li>
-            <li><a href="module4.html" class="">Module 4: Prompts in the Wild</a></li>
-            <li><a href="module5.html" class="">Module 5: You're a Pro!</a></li>
-        </ul>
+    
+    <nav class="bg-white shadow-md py-3">
+        <div class="module-container">
+            <div class="flex flex-wrap space-x-1 sm:space-x-2">
+                <a href="prompt_engineering_course_home.html" class="nav-link text-blue-600 text-sm sm:text-base">
+                    <i class="fas fa-home"></i> Home
+                </a>
+                <a href="prompt_engineering_module1.html" class="nav-link text-blue-600 text-sm sm:text-base">
+                    <i class="fas fa-book"></i> Module 1
+                </a>
+                <a href="#" class="nav-link active text-sm sm:text-base">
+                    <i class="fas fa-pencil-alt"></i> Module 2
+                </a>
+                <a href="#" class="nav-link text-blue-600 text-sm sm:text-base">
+                    <i class="fas fa-tools"></i> Module 3
+                </a>
+                <a href="#" class="nav-link text-blue-600 text-sm sm:text-base">
+                    <i class="fas fa-project-diagram"></i> Module 4
+                </a>
+            </div>
+        </div>
     </nav>
-
-    <div class="container">
-        <main>
-            <h2>Module 2: Your First Prompts - Giving Clear Instructions</h2>
-
-            <section class="learning-objectives">
-                <h3>What You'll Learn:</h3>
-                <ul>
-                    <li>Learn basic prompt parts (task, context, examples).</li>
-                    <li>Understand why specific details matter.</li>
-                    <li>Practice writing simple prompts.</li>
-                </ul>
-            </section>
-
-            <hr>
-
-            <section class="storyline">
-                <p><strong>Story Time:</strong> Sparky is back! Remember how AI needs clear instructions? Let\"s learn how to give Sparky exactly what it needs so it doesn\"t get confused. Think of it like ordering the perfect pizza!</p>
-                <img src=\"images/sparky_mascot_candidate.jpeg\" alt=\"Sparky the AI Mascot\" style=\"width: 100px; float: left; margin: 0 15px 10px 0; border-radius: 50%;\">           </section>
-
-            <section class="content">
-                <h3>Let's Dive In!</h3>
-                <p>If you just told a pizza place "Make pizza", you might get anything! Cheese? Pepperoni? Pineapple? Who knows! But if you say, "Make one large pizza with pepperoni, mushrooms, and extra cheese," you'll get exactly what you crave. Prompts work the same way. The more details you give, the better the result!</p>
-                <p>Good prompts often have a few key ingredients: 
-                    <ul>
-                        <li><strong>The Task (DO):</strong> What do you want the AI to *do*? (e.g., 'Write', 'Summarize', 'Explain', 'Draw')</li>
-                        <li><strong>The Context (INFO):</strong> What important details does the AI need to know? (e.g., 'a story about a brave knight', 'for a 7th grader', 'in a happy tone')</li>
-                        <li><strong>Examples (EXAMPLE):</strong> Sometimes showing an example helps! (e.g., 'like this poem: Roses are red...')</li>
+    
+    <main class="module-container py-6">
+        <div class="section-card">
+            <div class="flex items-center mb-6">
+                <div class="bg-blue-500 text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold mr-4">
+                    2
+                </div>
+                <h2 class="text-3xl font-bold text-blue-600">Creating Great Prompts</h2>
+            </div>
+            
+            <p class="text-lg mb-6">
+                Welcome to Module 2! Now that you know what prompt engineering is, let's learn how to create awesome prompts that get AI to do exactly what you want. It's like learning the secret language that makes AI your helpful assistant!
+            </p>
+            
+            <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
+                <h3 class="font-bold text-xl text-yellow-800">In this module, you'll learn:</h3>
+                <div class="mt-3 space-y-2">
+                    <div class="objective-item">
+                        <i class="fas fa-check-circle text-blue-600 mr-2"></i> What makes a good prompt vs. a bad prompt
+                    </div>
+                    <div class="objective-item">
+                        <i class="fas fa-check-circle text-blue-600 mr-2"></i> The key ingredients for creating clear prompts
+                    </div>
+                    <div class="objective-item">
+                        <i class="fas fa-check-circle text-blue-600 mr-2"></i> How to fix weak prompts to make them stronger
+                    </div>
+                    <div class="objective-item">
+                        <i class="fas fa-check-circle text-blue-600 mr-2"></i> Hands-on practice creating your own prompts
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section-card">
+            <h3 class="text-2xl font-bold text-blue-600 mb-4">
+                <i class="fas fa-star text-yellow-400 mr-2"></i> What Makes a Great Prompt?
+            </h3>
+            
+            <p class="mb-4">
+                Creating a good prompt is like giving directions to a friend who's never been to your house before. If your directions are clear, specific, and complete, your friend will arrive quickly. If they're vague or confusing, your friend might get lost!
+            </p>
+            
+            <div class="grid md:grid-cols-2 gap-6 my-6">
+                <div class="bg-red-50 p-4 rounded-lg border-2 border-red-300">
+                    <h4 class="text-lg font-bold text-red-600 mb-2">
+                        <i class="fas fa-thumbs-down mr-2"></i> Weak Prompts Are:
+                    </h4>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li>Vague and unclear</li>
+                        <li>Too short or missing details</li>
+                        <li>Confusing or contradictory</li>
+                        <li>Not specific about what you want</li>
+                        <li>Using words the AI might not understand</li>
                     </ul>
-                Let's compare! A weak prompt: "Write story." A better prompt: "Write a short, funny story about a cat who learns to fly." See the difference? The second one gives the AI much more to work with!</p>
-            </section>
-
-            <section class="interactive-elements">
-                <h3>Try It Out!</h3>
-                <div class="quiz"                    <h4>Quick Quiz: Prompt Parts</h4>
-                    <div id="quiz-m2-q1">
-                        <p>Prompt: "Write a short, funny story about a cat who learns to fly."</p>
-                        <p><strong>Question 1:</strong> What is the TASK?</p>
-                        <label><input type="radio" name="m2q1" value="write"> Write a story</label><br>
-                        <label><input type="radio" name="m2q1" value="cat"> A cat who learns to fly</label><br>
-                        <label><input type="radio" name="m2q1" value="funny"> Funny</label><br>
-                        <button onclick="checkAnswer(\'m2q1\', \'write\', \'feedback-m2-q1\')">Check Answer</button>
-                        <p id="feedback-m2-q1" style="font-weight: bold;"></p>
-                    </div>
-                    <div id="quiz-m2-q2" style="margin-top: 15px;">
-                         <p><strong>Question 2:</strong> What is the main CONTEXT/INFO?</p>
-                        <label><input type="radio" name="m2q2" value="write"> Write a story</label><br>
-                        <label><input type="radio" name="m2q2" value="cat"> About a cat who learns to fly</label><br>
-                        <label><input type="radio" name="m2q2" value="short"> Short and funny</label><br>
-                        <button onclick="checkAnswer(\'m2q2\', \'cat\', \'feedback-m2-q2\')">Check Answer</button>
-                        <p id="feedback-m2-q2" style="font-weight: bold;"></p>
+                </div>
+                
+                <div class="bg-green-50 p-4 rounded-lg border-2 border-green-300">
+                    <h4 class="text-lg font-bold text-green-600 mb-2">
+                        <i class="fas fa-thumbs-up mr-2"></i> Strong Prompts Are:
+                    </h4>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li>Clear and specific</li>
+                        <li>Detailed with enough information</li>
+                        <li>Well-structured and logical</li>
+                        <li>Focused on exactly what you want</li>
+                        <li>Using simple, direct language</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="bg-blue-50 p-4 rounded-lg border-2 border-blue-300 my-6">
+                <h4 class="text-lg font-bold text-blue-600 mb-2">
+                    <i class="fas fa-lightbulb text-yellow-500 mr-2"></i> The 5 Key Ingredients of Great Prompts
+                </h4>
+                <ol class="list-decimal pl-5 space-y-3">
+                    <li><strong>Task:</strong> Clearly state what you want the AI to do</li>
+                    <li><strong>Context:</strong> Provide background information</li>
+                    <li><strong>Details:</strong> Include specific requirements</li>
+                    <li><strong>Format:</strong> Explain how you want the answer structured</li>
+                    <li><strong>Tone:</strong> Describe the style or voice you want</li>
+                </ol>
+            </div>
+        </div>
+        
+        <div class="section-card">
+            <h3 class="text-2xl font-bold text-blue-600 mb-4">
+                <i class="fas fa-exchange-alt text-purple-500 mr-2"></i> Before & After: Prompt Makeovers
+            </h3>
+            
+            <p class="mb-4">
+                Let's see how we can transform weak prompts into strong ones using our key ingredients!
+            </p>
+            
+            <div class="bg-gray-50 rounded-lg p-5 mb-6">
+                <h4 class="font-bold text-lg mb-3">Example 1: Homework Help</h4>
+                
+                <div class="prompt-example weak-prompt">
+                    <p class="font-bold text-red-600 mb-1">Weak Prompt:</p>
+                    <p>"Help me with my science homework."</p>
+                </div>
+                
+                <div class="flex justify-center my-3">
+                    <i class="fas fa-arrow-down text-2xl text-blue-500"></i>
+                </div>
+                
+                <div class="prompt-example strong-prompt">
+                    <p class="font-bold text-green-600 mb-1">Strong Prompt:</p>
+                    <p>"I'm working on my 7th grade science homework about the water cycle. Can you explain the main stages of the water cycle in simple terms? Please include what happens at each stage and why it's important. Also, could you add a fun fact about the water cycle that might surprise me?"</p>
+                </div>
+                
+                <div class="mt-3 bg-blue-50 p-3 rounded-lg">
+                    <p class="text-blue-800">
+                        <i class="fas fa-magic mr-1"></i> <strong>What improved?</strong> The strong prompt specifies the topic (water cycle), grade level (7th), format (simple explanations with stages), and asks for additional interesting information (fun fact).
+                    </p>
+                </div>
+            </div>
+            
+            <div class="bg-gray-50 rounded-lg p-5 mb-6">
+                <h4 class="font-bold text-lg mb-3">Example 2: Story Creation</h4>
+                
+                <div class="prompt-example weak-prompt">
+                    <p class="font-bold text-red-600 mb-1">Weak Prompt:</p>
+                    <p>"Write me a story."</p>
+                </div>
+                
+                <div class="flex justify-center my-3">
+                    <i class="fas fa-arrow-down text-2xl text-blue-500"></i>
+                </div>
+                
+                <div class="prompt-example strong-prompt">
+                    <p class="font-bold text-green-600 mb-1">Strong Prompt:</p>
+                    <p>"Write a short adventure story about a 12-year-old who discovers a secret door in their school library. The story should be exciting but not scary, about 300 words long, and include a surprising twist at the end. Please use simple language that a middle school student would enjoy."</p>
+                </div>
+                
+                <div class="mt-3 bg-blue-50 p-3 rounded-lg">
+                    <p class="text-blue-800">
+                        <i class="fas fa-magic mr-1"></i> <strong>What improved?</strong> The strong prompt includes the genre (adventure), main character (12-year-old), setting (school library), tone (exciting but not scary), length (300 words), special elements (twist ending), and target audience (middle school).
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section-card">
+            <h3 class="text-2xl font-bold text-blue-600 mb-4">
+                <i class="fas fa-puzzle-piece text-yellow-500 mr-2"></i> Drag & Drop: Build Your Prompt
+            </h3>
+            
+            <p class="mb-4">
+                Let's practice creating a strong prompt by arranging the key components in the right order. Drag the pieces to build a great prompt!
+            </p>
+            
+            <div class="my-6">
+                <h4 class="font-bold mb-2">Your mission: Create a prompt asking the AI to help with a book report</h4>
+                
+                <div class="drag-container" id="prompt-target">
+                    <p class="text-blue-500 italic" id="drop-instructions">Drag the components here to build your prompt!</p>
+                </div>
+                
+                <div class="mt-4 p-3 bg-gray-100 rounded-lg" id="prompt-pieces">
+                    <div class="draggable" draggable="true" data-order="2">that includes the main characters, plot, and setting</div>
+                    <div class="draggable" draggable="true" data-order="3">in a bulleted list format</div>
+                    <div class="draggable" draggable="true" data-order="1">I need help creating a book report about "Charlotte's Web"</div>
+                    <div class="draggable" draggable="true" data-order="4">written in simple language for a 7th grade student</div>
+                    <div class="draggable" draggable="true" data-order="5">and please include 2-3 discussion questions I could answer about the book</div>
+                </div>
+                
+                <div class="mt-6 hidden" id="prompt-feedback">
+                    <div class="bg-green-100 border-l-4 border-green-500 p-4 rounded">
+                        <p class="font-bold text-green-700">Great job! You've built a strong prompt!</p>
+                        <p class="text-green-600 mt-2">Your prompt has all five key ingredients: task (create a book report), context (about Charlotte's Web), details (characters, plot, setting), format (bulleted list), and audience (7th grade language level).</p>
                     </div>
                 </div>
-                <div class="fill-blanks"                    <h4>Fix the Prompt!</h4>
-                    <p>Improve this weak prompt: "Tell me about dogs."</p>
-                    <p>Your improved prompt:</p>
-                    <textarea id="m2-fix-prompt" rows="3" style="width: 90%; padding: 5px;" placeholder="Add details! What do you want to know about dogs?"></textarea><br>
-                    <button onclick="checkFixPrompt(\'m2-fix-prompt\', \'feedback-m2-fix\')" style="margin-top: 5px;">Check My Prompt</button>
-                    <p id="feedback-m2-fix" style="font-weight: bold;"></p>
+            </div>
+        </div>
+        
+        <div class="section-card">
+            <h3 class="text-2xl font-bold text-blue-600 mb-4">
+                <i class="fas fa-pen-fancy text-purple-500 mr-2"></i> Your Turn: Prompt Makeover Challenge
+            </h3>
+            
+            <p class="mb-4">
+                Now it's your turn! Try improving these weak prompts using what you've learned.
+            </p>
+            
+            <div class="bg-gray-50 rounded-lg p-5 mb-6">
+                <h4 class="font-bold text-lg mb-3">Challenge 1:</h4>
+                
+                <div class="prompt-example weak-prompt">
+                    <p class="font-bold text-red-600 mb-1">Weak Prompt:</p>
+                    <p>"Tell me about dinosaurs."</p>
                 </div>
-                 <div class="chat-sim">
-                    <h4>Chat with Sparky!</h4>
-                    <div id="chat-m2" style="border: 1px solid #ccc; padding: 10px; height: 150px; overflow-y: scroll; margin-bottom: 10px; background-color: #f9f9f9;">
-                        <p><strong>Sparky:</strong> Try giving me a simple prompt! What should I write about?</p>
-                        <!-- Chat messages will appear here -->
+                
+                <div class="mt-3">
+                    <p class="font-bold mb-2">Your improved version:</p>
+                    <textarea class="w-full p-3 border border-blue-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" rows="4" id="improved-prompt-1" placeholder="Write your improved prompt here..."></textarea>
+                    
+                    <button class="mt-3 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg" onclick="checkImprovedPrompt(1)">
+                        Check My Prompt
+                    </button>
+                    
+                    <div class="mt-3 hidden" id="feedback-1"></div>
+                </div>
+            </div>
+            
+            <div class="bg-gray-50 rounded-lg p-5 mb-6">
+                <h4 class="font-bold text-lg mb-3">Challenge 2:</h4>
+                
+                <div class="prompt-example weak-prompt">
+                    <p class="font-bold text-red-600 mb-1">Weak Prompt:</p>
+                    <p>"Make a birthday card."</p>
+                </div>
+                
+                <div class="mt-3">
+                    <p class="font-bold mb-2">Your improved version:</p>
+                    <textarea class="w-full p-3 border border-blue-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" rows="4" id="improved-prompt-2" placeholder="Write your improved prompt here..."></textarea>
+                    
+                    <button class="mt-3 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg" onclick="checkImprovedPrompt(2)">
+                        Check My Prompt
+                    </button>
+                    
+                    <div class="mt-3 hidden" id="feedback-2"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section-card">
+            <h3 class="text-2xl font-bold text-blue-600 mb-4">
+                <i class="fas fa-robot text-indigo-500 mr-2"></i> AI Chat Simulator: Test Your Prompts
+            </h3>
+            
+            <p class="mb-4">
+                Try out your prompt skills with our AI Chat Simulator! Type different prompts and see how the quality of your prompt affects the AI's response.
+            </p>
+            
+            <div class="chat-simulator">
+                <div class="bg-blue-600 text-white p-3">
+                    <h4 class="font-bold"><i class="fas fa-comment-dots mr-2"></i> AI Chat Simulator</h4>
+                </div>
+                
+                <div class="chat-messages" id="chat-messages">
+                    <div class="ai-message">
+                        Hi there! I'm your AI assistant. Try writing me a prompt, and I'll respond based on how clear and specific your prompt is.
                     </div>
-                    <input type="text" id="chat-input-m2" placeholder="Your prompt for Sparky..." style="width: 70%; padding: 8px;">
-                    <button onclick="sendChatMessage(\'m2\')">Send Prompt</button>
                 </div>
-            </section>
-
-            <hr>
-
-            <section class="summary">
-                <h3>Quick Recap!</h3>
-                <p>Great work! You're learning how to craft clearer prompts. Remember the pizza analogy - details make the difference!</p>
-                <ul>
-                    <li>Good prompts tell the AI what to DO.</li>
-                    <li>They give important INFO (context).</li>
-                    <li>Sometimes, an EXAMPLE helps too.</li>
-                    <li>More details = better results!</li>
-                </ul>
-            </section>
-
-        </main>
-    </div>
-
-    <footer>
-        <p>&copy; 2025 Prompt Power Course. Let's learn together!</p>
-    </footer>
-
-    <script src="js/scripts.js"></script>
-
-</body>
-</html>
+                
+                <div class="p-3 bg-gray-100 border-t-2 border-gray-200">
+                    <div class="flex">
+                        <input type="text" id="user-prompt" placeholder="Type your prompt here..." class="flex-grow p-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-r-lg" onclick="simulateChat()">
+                            <i class="fas fa-paper-plane"></i>
+                       
