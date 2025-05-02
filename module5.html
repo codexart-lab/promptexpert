@@ -3,93 +3,622 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prompt Power! - Module 5: You're a Pro!</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Module 5: AI for Homework and Learning</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: #f0f9ff;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .module-card {
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .module-card:hover {
+            transform: translateY(-5px);
+        }
+        .objective-card {
+            border-left: 5px solid #3b82f6;
+            background-color: #eff6ff;
+        }
+        .quiz-option {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            margin: 5px 0;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .quiz-option:hover {
+            border-color: #93c5fd;
+            background-color: #dbeafe;
+        }
+        .quiz-option.selected {
+            border-color: #3b82f6;
+            background-color: #bfdbfe;
+        }
+        .quiz-option.correct {
+            border-color: #10b981;
+            background-color: #d1fae5;
+        }
+        .quiz-option.incorrect {
+            border-color: #ef4444;
+            background-color: #fee2e2;
+        }
+        .prompt-builder-option {
+            background-color: #e0f2fe;
+            border-radius: 8px;
+            padding: 8px 12px;
+            margin: 5px;
+            cursor: pointer;
+            display: inline-block;
+            transition: all 0.2s;
+        }
+        .prompt-builder-option:hover {
+            background-color: #bae6fd;
+            transform: scale(1.05);
+        }
+        .nav-highlight {
+            background-color: #dbeafe;
+            border-radius: 8px;
+        }
+        .interactive-section {
+            border: 2px dashed #60a5fa;
+            border-radius: 15px;
+            padding: 20px;
+            background-color: #f0f9ff;
+        }
+    </style>
 </head>
 <body>
-
-    <header>
-        <h1>Prompt Power! Your Guide to Talking to AI</h1>
-    </header>
-
-    <nav>
-        <ul>
-            <li><a href="module1.html" class="">Module 1: What's AI?</a></li>
-            <li><a href="module2.html" class="">Module 2: First Prompts</a></li>
-            <li><a href="module3.html" class="">Module 3: Supercharging</a></li>
-            <li><a href="module4.html" class="">Module 4: Prompts in the Wild</a></li>
-            <li><a href="module5.html" class="active">Module 5: You're a Pro!</a></li>
-        </ul>
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-md py-4 px-6 sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="https://img.icons8.com/color/48/000000/robot.png" alt="AI Icon" class="h-10 w-10">
+                <span class="ml-2 text-xl font-bold text-blue-600">Prompt Engineering for Young Learners</span>
+            </div>
+            <div class="hidden md:flex space-x-4">
+                <a href="#" class="px-3 py-2 text-blue-500 hover:text-blue-700">Home</a>
+                <a href="#" class="px-3 py-2 text-blue-500 hover:text-blue-700">Module 1</a>
+                <a href="#" class="px-3 py-2 text-blue-500 hover:text-blue-700">Module 2</a>
+                <a href="#" class="px-3 py-2 text-blue-500 hover:text-blue-700">Module 3</a>
+                <a href="#" class="px-3 py-2 text-blue-500 hover:text-blue-700">Module 4</a>
+                <a href="#" class="px-3 py-2 nav-highlight font-bold">Module 5</a>
+            </div>
+        </div>
     </nav>
 
-    <div class="container">
-        <main>
-            <h2>Module 5: You're a Prompt Engineer! - Review & Next Steps</h2>
+    <!-- Main Content -->
+    <div class="container mx-auto mt-8 px-4 pb-20">
+        <!-- Header Section -->
+        <div class="text-center mb-10">
+            <h1 class="text-4xl font-bold text-blue-600 mb-4">Module 5: AI for Homework and Learning</h1>
+            <p class="text-xl text-gray-600">Learn how to use AI responsibly to help with your schoolwork!</p>
+            <div class="mt-4 flex justify-center">
+                <img src="https://img.icons8.com/cute-clipart/64/000000/study.png" alt="Study icon" class="h-16 w-16 mx-2">
+                <img src="https://img.icons8.com/color/64/000000/books.png" alt="Books icon" class="h-16 w-16 mx-2">
+                <img src="https://img.icons8.com/color/64/000000/idea.png" alt="Idea icon" class="h-16 w-16 mx-2">
+            </div>
+        </div>
 
-            <section class="learning-objectives">
-                <h3>What You'll Learn:</h3>
-                <ul>
-                    <li>Review all the cool prompt engineering skills you've learned.</li>
-                    <li>Test your knowledge with a final fun activity.</li>
-                    <li>Get ideas on how to keep practicing and exploring AI safely.</li>
-                </ul>
-            </section>
+        <!-- Learning Objectives -->
+        <div class="mb-12 objective-card p-6 rounded-lg">
+            <h2 class="text-2xl font-bold text-blue-700 mb-4">
+                <i class="fas fa-bullseye text-blue-500 mr-2"></i>Learning Objectives
+            </h2>
+            <p class="mb-4">By the end of this module, you will be able to:</p>
+            <ul class="list-disc pl-8 space-y-2">
+                <li>Create effective prompts for different school subjects</li>
+                <li>Learn how to get help with homework without cheating</li>
+                <li>Build a "Homework Helper" prompt for any assignment</li>
+                <li>Understand the difference between using AI as a tutor versus using it to cheat</li>
+                <li>Practice responsible AI use for your education</li>
+            </ul>
+        </div>
 
-            <h            <section class="storyline">
-                <p><strong>Story Time:</strong> Congratulations! You\"ve made it through Sparky\"s Prompt Academy! You\"ve learned so much about talking to AI. It\"s time to celebrate your new skills and think about what comes next.</p>
-                <img src=\"images/sparky_mascot_candidate.jpeg\" alt=\"Sparky the AI Mascot - Graduation!\" style=\"width: 150px; display: block; margin: 15px auto; border: 3px solid #4682b4; padding: 5px;\">
-                <!-- Completion \'Certificate\' graphic placeholder -->           </section>
+        <!-- Introduction Section -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-12">
+            <h2 class="text-2xl font-bold text-blue-600 mb-4">
+                <i class="fas fa-lightbulb text-yellow-400 mr-2"></i>AI: Your Study Buddy
+            </h2>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-2/3 pr-4">
+                    <p class="mb-4">AI can be like having a helpful study buddy available 24/7! It can explain difficult concepts, help you brainstorm ideas for projects, and give you practice problems to solve.</p>
+                    <p class="mb-4">But remember, just like a real study buddy, AI is there to <span class="font-bold text-blue-600">help you learn</span> - not do the work for you. Think of AI as a tutor that helps you understand, not as someone who gives you answers to copy.</p>
+                    <p>In this module, we'll learn how to use AI the right way to boost your learning!</p>
+                </div>
+                <div class="md:w-1/3 flex justify-center mt-4 md:mt-0">
+                    <img src="https://img.icons8.com/color/240/000000/student-male--v1.png" alt="Student with AI" class="h-48">
+                </div>
+            </div>
+        </div>
 
-            <section class="content">
-                <h3>Let's Dive In!</h3>
-                <p>Let's take a quick trip back through everything you've learned! 
-                    <ul>
-                        <li>You discovered what AI is and why clear <strong>prompts</strong> are like magic words for talking to it (Module 1).</li>
-                        <li>You learned the key parts of a good prompt: the <strong>Task</strong> (DO), the <strong>Context</strong> (INFO), and sometimes <strong>Examples</strong> (Module 2).</li>
-                        <li>You mastered awesome techniques like setting a <strong>role</strong> or <strong>tone</strong>, asking for specific <strong>formats</strong>, and using <strong>iteration</strong> (follow-up questions) to get better answers (Module 3).</li>
-                        <li>You saw how prompts work in the real world for fun and school, and learned the importance of using AI <strong>responsibly</strong> by checking facts and being original (Module 4).</li>
+        <!-- Different Subject Prompts -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-12">
+            <h2 class="text-2xl font-bold text-blue-600 mb-6">
+                <i class="fas fa-book text-green-500 mr-2"></i>Prompts for Different School Subjects
+            </h2>
+            
+            <!-- Math Prompts -->
+            <div class="mb-8 bg-blue-50 rounded-lg p-4">
+                <h3 class="text-xl font-bold text-blue-700 mb-3 flex items-center">
+                    <img src="https://img.icons8.com/color/48/000000/mathematics.png" alt="Math" class="h-8 w-8 mr-2">
+                    Math Prompts
+                </h3>
+                <div class="mb-3">
+                    <p class="font-bold">Instead of asking:</p>
+                    <div class="bg-red-100 p-3 rounded-lg mb-2">
+                        "What's the solution to 3x + 7 = 22?"
+                    </div>
+                    <p class="font-bold">Try asking:</p>
+                    <div class="bg-green-100 p-3 rounded-lg">
+                        "Can you explain the steps to solve the equation 3x + 7 = 22? I'm struggling with the concept of isolating variables."
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <p class="font-bold mb-2">More good math prompts:</p>
+                    <ul class="list-disc pl-8 space-y-2">
+                        <li>"Could you help me understand the concept of fractions with a real-world example?"</li>
+                        <li>"I'm confused about the Pythagorean theorem. Can you explain it in simple terms and give me an example problem to try?"</li>
+                        <li>"Can you create a step-by-step guide for solving percentage problems?"</li>
                     </ul>
-                You've come a long way and now have the power to communicate effectively with AI!</p>
-                <p>What's next? Keep practicing! The more you try writing prompts, the better you'll get. Explore different AI tools safely (ask a parent or teacher first!) and see what amazing things you can create or learn. The world of AI is always growing, and now you have the skills to be a part of it!</p>
-            </section>
-
-            <section class="interactive-elements">
-                <h3>Try It Out!</h3>
-                <div class="quiz">
-                    <h4>Final Challenge!</h4>
-                    <p><em>(Interactive final quiz covering all modules coming soon!)</em></p>
                 </div>
-                <div class="mini-project">
-                    <h4>Bonus Mission! (Optional)</h4>
-                    <p>Create your own short guide or comic strip explaining one important thing about writing good prompts! <em>(No submission needed, just for fun!)</em></p>
+            </div>
+            
+            <!-- Science Prompts -->
+            <div class="mb-8 bg-green-50 rounded-lg p-4">
+                <h3 class="text-xl font-bold text-green-700 mb-3 flex items-center">
+                    <img src="https://img.icons8.com/color/48/000000/test-tube.png" alt="Science" class="h-8 w-8 mr-2">
+                    Science Prompts
+                </h3>
+                <div class="mb-3">
+                    <p class="font-bold">Instead of asking:</p>
+                    <div class="bg-red-100 p-3 rounded-lg mb-2">
+                        "Write a paragraph about photosynthesis for my homework"
+                    </div>
+                    <p class="font-bold">Try asking:</p>
+                    <div class="bg-green-100 p-3 rounded-lg">
+                        "Can you explain photosynthesis as if you're telling a story? I need to understand the process better so I can write my own paragraph about it."
+                    </div>
                 </div>
-                 <div class="certificate">
-                    <h4>You Did It!</h4>
-                    <p style="text-align: center; font-size: 1.2em; color: #4682b4; border: 2px dashed #5f9ea0; padding: 20px; margin: 10px;">Congratulations, Prompt Engineer!<br>You've successfully completed the Prompt Power course!<br><em>(Imagine a cool certificate graphic here!)</em></p>
+                <div class="mt-4">
+                    <p class="font-bold mb-2">More good science prompts:</p>
+                    <ul class="list-disc pl-8 space-y-2">
+                        <li>"I'm building a volcano model. What chemical reaction causes the eruption and how does it work?"</li>
+                        <li>"Can you help me brainstorm five interesting facts about space that I could research further for my project?"</li>
+                        <li>"What are 3 simple experiments I could do at home to demonstrate the water cycle?"</li>
+                    </ul>
                 </div>
-            </section>
+            </div>
+            
+            <!-- History Prompts -->
+            <div class="mb-8 bg-yellow-50 rounded-lg p-4">
+                <h3 class="text-xl font-bold text-yellow-700 mb-3 flex items-center">
+                    <img src="https://img.icons8.com/color/48/000000/time-machine.png" alt="History" class="h-8 w-8 mr-2">
+                    History Prompts
+                </h3>
+                <div class="mb-3">
+                    <p class="font-bold">Instead of asking:</p>
+                    <div class="bg-red-100 p-3 rounded-lg mb-2">
+                        "What were the causes of World War II?"
+                    </div>
+                    <p class="font-bold">Try asking:</p>
+                    <div class="bg-green-100 p-3 rounded-lg">
+                        "I'm creating a timeline for the events leading up to World War II. Can you help me identify 5 major causes and explain why each was important? This will help me organize my research."
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <p class="font-bold mb-2">More good history prompts:</p>
+                    <ul class="list-disc pl-8 space-y-2">
+                        <li>"If you were a kid my age living during the American Revolution, what would your daily life be like?"</li>
+                        <li>"I need to compare Ancient Egyptian and Ancient Greek civilizations for my project. What are three major similarities and differences I should focus on?"</li>
+                        <li>"Can you suggest some interesting questions I could research about the Civil Rights Movement?"</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Language Arts Prompts -->
+            <div class="bg-purple-50 rounded-lg p-4">
+                <h3 class="text-xl font-bold text-purple-700 mb-3 flex items-center">
+                    <img src="https://img.icons8.com/color/48/000000/literature.png" alt="Language Arts" class="h-8 w-8 mr-2">
+                    Language Arts Prompts
+                </h3>
+                <div class="mb-3">
+                    <p class="font-bold">Instead of asking:</p>
+                    <div class="bg-red-100 p-3 rounded-lg mb-2">
+                        "Write a book report on 'Charlotte's Web'"
+                    </div>
+                    <p class="font-bold">Try asking:</p>
+                    <div class="bg-green-100 p-3 rounded-lg">
+                        "I just finished reading 'Charlotte's Web' and need to write a book report. Can you help me brainstorm the main themes and important character moments I should include in my analysis?"
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <p class="font-bold mb-2">More good language arts prompts:</p>
+                    <ul class="list-disc pl-8 space-y-2">
+                        <li>"I'm writing a story about a space adventure. Can you help me come up with interesting obstacles my main character might face?"</li>
+                        <li>"Could you explain the difference between metaphors and similes with examples that would be fun for a 7th grader?"</li>
+                        <li>"I need to practice my grammar. Can you create 5 sentences with common grammatical errors for me to fix?"</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
-            <hr>
+        <!-- Interactive Exercise: Transforming Prompts -->
+        <div class="interactive-section mb-12">
+            <h2 class="text-2xl font-bold text-blue-600 mb-4">
+                <i class="fas fa-sync-alt text-blue-500 mr-2"></i>Interactive Activity: Transform the Prompt!
+            </h2>
+            <p class="mb-4">Practice transforming "doing it for me" prompts into "helping me learn" prompts. Try to rewrite these prompts to make them better for learning!</p>
+            
+            <div class="bg-white rounded-lg p-4 mb-4">
+                <p class="font-bold mb-2">Exercise 1:</p>
+                <p class="bg-red-100 p-3 rounded-lg mb-2">Original prompt: "Write me a 300-word essay about dinosaurs."</p>
+                <p class="font-semibold mb-2">Your improved prompt could be:</p>
+                <textarea class="w-full p-3 border border-blue-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" rows="3" placeholder="Write your improved prompt here..."></textarea>
+                <button class="mt-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded" onclick="showHint('hint1')">Show Hint</button>
+                <div id="hint1" class="hidden mt-2 p-3 bg-blue-50 rounded-lg">
+                    <p class="font-semibold">Hint:</p>
+                    <p>Try asking for help brainstorming main points about dinosaurs that you can research and write about yourself. Ask for an outline structure instead of a complete essay.</p>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg p-4">
+                <p class="font-bold mb-2">Exercise 2:</p>
+                <p class="bg-red-100 p-3 rounded-lg mb-2">Original prompt: "Solve these math problems for me: 12 × 8, 45 ÷ 9, 17 + 24"</p>
+                <p class="font-semibold mb-2">Your improved prompt could be:</p>
+                <textarea class="w-full p-3 border border-blue-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" rows="3" placeholder="Write your improved prompt here..."></textarea>
+                <button class="mt-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded" onclick="showHint('hint2')">Show Hint</button>
+                <div id="hint2" class="hidden mt-2 p-3 bg-blue-50 rounded-lg">
+                    <p class="font-semibold">Hint:</p>
+                    <p>Ask for step-by-step explanations of how to solve one type of problem. Then you can apply that method to solve the other problems yourself.</p>
+                </div>
+            </div>
+        </div>
 
-            <section class="summary">
-                <h3>Quick Recap!</h3>
-                <p>You've officially graduated from Prompt Power! Remember the key ideas and keep exploring.</p>
-                <ul>
-                    <li>Review: Recall the journey from basic prompts to advanced techniques.</li>
-                    <li>Practice: Keep writing prompts to improve your skills.</li>
-                    <li>Explore Safely: Discover new AI tools with guidance.</li>
-                    <li>Be Responsible: Always use AI smartly and ethically.</li>
+        <!-- Ethical AI Use vs Cheating -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-12">
+            <h2 class="text-2xl font-bold text-blue-600 mb-4">
+                <i class="fas fa-balance-scale text-blue-500 mr-2"></i>Using AI Responsibly: Helper vs. Cheater
+            </h2>
+            
+            <div class="flex flex-col md:flex-row mb-6">
+                <div class="md:w-1/2 p-4">
+                    <h3 class="text-xl font-bold text-green-600 mb-3 flex items-center">
+                        <img src="https://img.icons8.com/color/48/000000/checked--v1.png" alt="Thumbs up" class="h-8 w-8 mr-2">
+                        AI as a Helpful Learning Tool
+                    </h3>
+                    <div class="bg-green-50 p-4 rounded-lg h-full">
+                        <ul class="list-disc pl-6 space-y-3">
+                            <li><span class="font-bold">Using AI to explain</span> concepts you don't understand</li>
+                            <li><span class="font-bold">Asking AI to create practice problems</span> for you to solve</li>
+                            <li><span class="font-bold">Getting feedback</span> on work you've already done</li>
+                            <li><span class="font-bold">Brainstorming ideas</span> for projects or essays</li>
+                            <li><span class="font-bold">Breaking down complex problems</span> into smaller, manageable steps</li>
+                            <li><span class="font-bold">Using AI as a study partner</span> to quiz you on material</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="md:w-1/2 p-4">
+                    <h3 class="text-xl font-bold text-red-600 mb-3 flex items-center">
+                        <img src="https://img.icons8.com/color/48/000000/cancel--v1.png" alt="Thumbs down" class="h-8 w-8 mr-2">
+                        Using AI to Cheat
+                    </h3>
+                    <div class="bg-red-50 p-4 rounded-lg h-full">
+                        <ul class="list-disc pl-6 space-y-3">
+                            <li><span class="font-bold">Asking AI to write</span> your entire essay or report</li>
+                            <li><span class="font-bold">Copying answers</span> directly without understanding them</li>
+                            <li><span class="font-bold">Having AI do your homework</span> instead of learning the material</li>
+                            <li><span class="font-bold">Submitting AI-generated work</span> as your own without any input</li>
+                            <li><span class="font-bold">Using AI during tests</span> when you're supposed to rely on your own knowledge</li>
+                            <li><span class="font-bold">Avoiding learning</span> by letting AI do the thinking for you</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-yellow-50 p-5 rounded-lg">
+                <h3 class="text-lg font-bold text-yellow-700 mb-2">Remember:</h3>
+                <p class="mb-2">The goal of school is to help YOU learn and grow your brain! AI should be a tool that helps you understand better, not a shortcut to avoid learning.</p>
+                <p>Think about it: if you use AI to do all your homework, you might get a good grade on the assignment, but you won't learn what you need to know for tests, future classes, or real life!</p>
+            </div>
+            
+            <!-- Quiz -->
+            <div class="mt-6">
+                <h3 class="text-xl font-bold text-blue-600 mb-3">Quick Quiz: Is it Cheating?</h3>
+                <p class="mb-3">For each situation, decide if it's using AI responsibly or if it's cheating:</p>
+                
+                <div class="mb-4">
+                    <p class="font-bold">1. You ask AI to solve your math problems and you copy the answers to your homework.</p>
+                    <div class="quiz-option" onclick="selectOption('q1', this, 'incorrect')">A) This is responsible use - AI is helping me complete my work</div>
+                    <div class="quiz-option" onclick="selectOption('q1', this, 'correct')">B) This is cheating - I'm not learning how to solve the problems myself</div>
+                </div>
+                
+                <div class="mb-4">
+                    <p class="font-bold">2. You're stuck on a science concept, so you ask AI to explain it in a simpler way with examples.</p>
+                    <div class="quiz-option" onclick="selectOption('q2', this, 'correct')">A) This is responsible use - AI is helping me understand</div>
+                    <div class="quiz-option" onclick="selectOption('q2', this, 'incorrect')">B) This is cheating - I should only use my textbook</div>
+                </div>
+                
+                <div class="mb-4">
+                    <p class="font-bold">3. You ask AI to write your book report for you the night before it's due.</p>
+                    <div class="quiz-option" onclick="selectOption('q3', this, 'incorrect')">A) This is responsible use - I'm using AI to help me complete my assignment</div>
+                    <div class="quiz-option" onclick="selectOption('q3', this, 'correct')">B) This is cheating - I'm not showing my own understanding of the book</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Homework Helper Prompt Builder -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-12">
+            <h2 class="text-2xl font-bold text-blue-600 mb-4">
+                <i class="fas fa-tools text-blue-500 mr-2"></i>Homework Helper Prompt Builder
+            </h2>
+            <p class="mb-4">Use this interactive tool to build effective homework help prompts! Select options from each category to create your perfect prompt.</p>
+            
+            <div class="bg-blue-50 p-5 rounded-lg mb-6">
+                <h3 class="text-lg font-bold text-blue-700 mb-3">Step 1: Select your subject</h3>
+                <div class="flex flex-wrap">
+                    <div class="prompt-builder-option" onclick="buildPrompt('subject', 'Math')">Math</div>
+                    <div class="prompt-builder-option" onclick="buildPrompt('subject', 'Science')">Science</div>
+                    <div class="prompt-builder-option" onclick="buildPrompt('subject', 'History')">History</div>
+                    <div class="prompt-builder-option" onclick="buildPrompt('subject', 'Language Arts')">Language Arts</div>
+                    <div class="prompt-builder-option" onclick="buildPrompt('subject', 'Social Studies')">Social Studies</div>
+                </div>
+            </div>
+            
+            <div class="bg-blue-50 p-5 rounded-lg mb-6">
+                <h3 class="text-lg font-bold text-blue-700 mb-3">Step 2: What kind of help do you need?</h3>
+                <div class="flex flex-wrap">
+                    <div class="prompt-builder-option" onclick="buildPrompt('help', 'Explain a concept')">Explain a concept</div>
+                    <div class="prompt-builder-option" onclick="buildPrompt('help', 'Break down steps')">Break down steps</div>
+                    <div class="prompt-builder-option" onclick="buildPrompt('help', 'Brainstorm ideas')">Brainstorm ideas</div>
+                    <div class="prompt-builder-option" onclick="buildPrompt('help', 'Create practice problems')">Create practice problems</div>
+                    <div class="prompt-builder-option" onclick="buildPrompt('help', 'Give examples')">Give examples</div>
+                </div>
+            </div>
+            
+            <div class="bg-blue-50 p-5 rounded-lg mb-6">
+                <h3 class="text-lg font-bold text-blue-700 mb-3">Step 3: How would you like the information presented?</h3>
+                <div class="flex flex-wrap">
+                    <div class="prompt-builder-option" onclick="buildPrompt('style', 'Simple explanation')">Simple explanation</div>
+                    <div class="prompt-builder-option" onclick="buildPrompt('style', 'Step-by-step guide')">Step-by-step guide</div>
+                    <div class="prompt-builder-option" onclick="buildPrompt('style', 'Visual description')">Visual description</div>
+                    <div class="prompt-builder-option" onclick="buildPrompt('style', 'Real-world example')">Real-world example</div>
+                    <div class="prompt-builder-option" onclick="buildPrompt('style', 'Fun story format')">Fun story format</div>
+                </div>
+            </div>
+            
+            <div class="mt-6">
+                <h3 class="text-lg font-bold text-blue-700 mb-3">Your Homework Helper Prompt:</h3>
+                <div class="bg-white border-2 border-blue-300 rounded-lg p-4 min-h-[100px]" id="built-prompt">
+                    Your prompt will appear here as you make selections above!
+                </div>
+                <button class="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded" onclick="copyPrompt()">
+                    <i class="far fa-copy mr-2"></i>Copy Prompt
+                </button>
+                <button class="mt-4 ml-2 bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded" onclick="resetPrompt()">
+                    <i class="fas fa-redo mr-2"></i>Start Over
+                </button>
+            </div>
+        </div>
+
+        <!-- Examples of AI and Humans Working Together -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-12">
+            <h2 class="text-2xl font-bold text-blue-600 mb-4">
+                <i class="fas fa-users text-blue-500 mr-2"></i>Examples: AI and Students Working Together
+            </h2>
+            
+            <div class="flex flex-col md:flex-row mb-8">
+                <div class="md:w-1/2 p-3">
+                    <img src="https://img.icons8.com/color/240/000000/student-center.png" alt="Students working with AI" class="mx-auto h-40">
+                </div>
+                <div class="md:w-1/2 p-3">
+                    <h3 class="text-xl font-bold text-purple-600 mb-2">Research Project Help</h3>
+                    <p class="mb-3"><span class="font-bold">Student prompt:</span> "I'm doing a research project on ocean pollution. Can you help me brainstorm 5 specific topics I could focus on and some questions I should try to answer for each topic?"</p>
+                    <p><span class="font-bold">Why this works:</span> The student is asking for guidance on narrowing down their research, not asking AI to write the whole project. They'll still need to do the actual research, thinking, and writing.</p>
+                </div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 p-3">
+                    <h3 class="text-xl font-bold text-purple-600 mb-2">Math Homework Support</h3>
+                    <p class="mb-3"><span class="font-bold">Student prompt:</span> "I'm trying to solve problems with negative numbers. Can you show me the step-by-step process for solving -4 × 7 + 2, and then give me 3 similar practice problems that get harder each time?"</p>
+                    <p><span class="font-bold">Why this works:</span> The student is learning the process, getting examples, and will practice with similar problems. They're using AI as a tutor, not just an answer machine.</p>
+                </div>
+                <div class="md:w-1/2 p-3">
+                    <img src="https://img.icons8.com/color/240/000000/learning.png" alt="Learning with AI" class="mx-auto h-40">
+                </div>
+            </div>
+        </div>
+
+        <!-- Summary and Key Takeaways -->
+        <div class="bg-blue-100 rounded-lg shadow-lg p-6 mb-12">
+            <h2 class="text-2xl font-bold text-blue-700 mb-4">
+                <i class="fas fa-star text-yellow-500 mr-2"></i>Summary and Key Takeaways
+            </h2>
+            
+            <div class="bg-white rounded-lg p-5">
+                <h3 class="text-xl font-bold text-blue-600 mb-3">In this module, you learned:</h3>
+                <ul class="list-disc pl-8 space-y-2">
+                    <li>How to create effective prompts for different school subjects</li>
+                    <li>The difference between using AI to help you learn vs. using it to cheat</li>
+                    <li>How to transform "do it for me" prompts into "help me learn" prompts</li>
+                    <li>Examples of students and AI working together properly</li>
+                    <li>How to build your own Homework Helper prompts</li>
                 </ul>
-            </section>
+                
+                <div class="mt-6 p-4 bg-yellow-50 rounded-lg">
+                    <h3 class="text-lg font-bold text-yellow-700 mb-2">Remember This:</h3>
+                    <p>AI should be your learning assistant, not your replacement! The goal is for YOU to understand and learn, with AI helping you along the way. Your brain is like a muscle - it needs to do the work to get stronger!</p>
+                </div>
+            </div>
+        </div>
 
-        </main>
+        <!-- Module Navigation -->
+        <div class="flex justify-between mt-8 mb-12">
+            <a href="#" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg flex items-center">
+                <i class="fas fa-arrow-left mr-2"></i>Previous: Creative Writing with AI
+            </a>
+            <a href="#" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg flex items-center">
+                Continue Learning<i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
     </div>
 
-    <footer>
-        <p>&copy; 2025 Prompt Power Course. Keep learning!</p>
+    <!-- Footer -->
+    <footer class="bg-blue-600 text-white py-6">
+        <div class="container mx-auto px-4 text-center">
+            <p class="mb-2">Prompt Engineering for Young Learners - Module 5</p>
+            <p>Created for 7th grade students</p>
+        </div>
     </footer>
 
-    <script src="js/scripts.js"></script>
-
+    <script>
+        // Function for showing hints
+        function showHint(hintId) {
+            const hint = document.getElementById(hintId);
+            if (hint.classList.contains('hidden')) {
+                hint.classList.remove('hidden');
+            } else {
+                hint.classList.add('hidden');
+            }
+        }
+        
+        // Functions for quiz
+        function selectOption(questionId, element, type) {
+            // Reset all options for this question
+            const questionOptions = element.parentElement.querySelectorAll('.quiz-option');
+            questionOptions.forEach(option => {
+                option.classList.remove('selected', 'correct', 'incorrect');
+            });
+            
+            // Select and mark this option
+            element.classList.add('selected');
+            element.classList.add(type);
+            
+            // Show feedback
+            if (type === 'correct') {
+                alert("Correct! Great job! 🎉");
+            } else {
+                alert("Not quite. Think about whether this helps you learn or just gives you an answer.");
+            }
+        }
+        
+        // Functions for prompt builder
+        let promptData = {
+            subject: null,
+            help: null,
+            style: null
+        };
+        
+        function buildPrompt(category, value) {
+            // Update data
+            promptData[category] = value;
+            
+            // Highlight selected option in each category
+            const options = document.querySelectorAll(`.prompt-builder-option`);
+            options.forEach(option => {
+                if (option.innerText === value) {
+                    option.style.backgroundColor = '#bfdbfe';
+                    option.style.fontWeight = 'bold';
+                }
+            });
+            
+            // Update the prompt display
+            updatePromptDisplay();
+        }
+        
+        function updatePromptDisplay() {
+            const promptElement = document.getElementById('built-prompt');
+            
+            if (!promptData.subject && !promptData.help && !promptData.style) {
+                promptElement.innerText = "Your prompt will appear here as you make selections above!";
+                return;
+            }
+            
+            let promptText = "I need help with ";
+            
+            if (promptData.subject) {
+                promptText += "my " + promptData.subject.toLowerCase() + " homework. ";
+            } else {
+                promptText += "a school assignment. ";
+            }
+            
+            if (promptData.help) {
+                if (promptData.help === "Explain a concept") {
+                    promptText += "Could you explain the concept of [your specific topic] ";
+                } else if (promptData.help === "Break down steps") {
+                    promptText += "Could you break down the steps for solving [your specific problem] ";
+                } else if (promptData.help === "Brainstorm ideas") {
+                    promptText += "I need help brainstorming ideas for [your assignment] ";
+                } else if (promptData.help === "Create practice problems") {
+                    promptText += "Can you create some practice problems about [your topic] for me to solve ";
+                } else if (promptData.help === "Give examples") {
+                    promptText += "Could you give me examples of [your topic] ";
+                }
+            } else {
+                promptText += "I need help with [describe what you need] ";
+            }
+            
+            if (promptData.style) {
+                if (promptData.style === "Simple explanation") {
+                    promptText += "using simple words and explanations that a 7th grader would understand?";
+                } else if (promptData.style === "Step-by-step guide") {
+                    promptText += "with a clear step-by-step guide I can follow?";
+                } else if (promptData.style === "Visual description") {
+                    promptText += "and describe any visuals or diagrams that might help me understand?";
+                } else if (promptData.style === "Real-world example") {
+                    promptText += "with real-world examples that would make sense to me?";
+                } else if (promptData.style === "Fun story format") {
+                    promptText += "in a fun story format that will help me remember the information?";
+                }
+            } else {
+                promptText += "in a way that will help me understand and learn?";
+            }
+            
+            promptElement.innerText = promptText;
+        }
+        
+        function copyPrompt() {
+            const promptText = document.getElementById('built-prompt').innerText;
+            if (promptText !== "Your prompt will appear here as you make selections above!") {
+                navigator.clipboard.writeText(promptText)
+                    .then(() => {
+                        alert("Prompt copied to clipboard! 📋");
+                    })
+                    .catch(err => {
+                        console.error('Could not copy text: ', err);
+                    });
+            } else {
+                alert("Please build your prompt first by making selections above!");
+            }
+        }
+        
+        function resetPrompt() {
+            promptData = {
+                subject: null,
+                help: null,
+                style: null
+            };
+            
+            // Reset highlighting
+            const options = document.querySelectorAll('.prompt-builder-option');
+            options.forEach(option => {
+                option.style.backgroundColor = '#e0f2fe';
+                option.style.fontWeight = 'normal';
+            });
+            
+            // Reset prompt display
+            document.getElementById('built-prompt').innerText = "Your prompt will appear here as you make selections above!";
+        }
+    </script>
 </body>
 </html>
