@@ -3,124 +3,396 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prompt Power! - Module 1: What's AI?</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Module 1: What is Prompt Engineering?</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f0f9ff;
+            color: #1e3a8a;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+        }
+        
+        .container {
+            max-width: 900px;
+        }
+        
+        .nav-pill {
+            transition: all 0.3s ease;
+        }
+        
+        .nav-pill:hover {
+            transform: scale(1.05);
+        }
+        
+        .quiz-option {
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .quiz-option:hover {
+            transform: translateX(10px);
+        }
+        
+        .quiz-correct {
+            background-color: #d1fae5 !important;
+            border-color: #059669 !important;
+        }
+        
+        .quiz-incorrect {
+            background-color: #fee2e2 !important;
+            border-color: #dc2626 !important;
+        }
+        
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .animated-text {
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        .example-box {
+            border-left: 4px solid #3b82f6;
+        }
+    </style>
 </head>
 <body>
-
-    <header>
-        <h1>Prompt Power! Your Guide to Talking to AI</h1>
-    </header>
-
-    <nav>
-        <ul>
-            <li><a href="module1.html" class="active">Module 1: What's AI?</a></li>
-            <li><a href="module2.html" class="">Module 2: First Prompts</a></li>
-            <li><a href="module3.html" class="">Module 3: Supercharging</a></li>
-            <li><a href="module4.html" class="">Module 4: Prompts in the Wild</a></li>
-            <li><a href="module5.html" class="">Module 5: You're a Pro!</a></li>
-        </ul>
+    <!-- Navigation Bar -->
+    <nav class="bg-blue-600 text-white p-4 sticky top-0 z-50 shadow-md">
+        <div class="container mx-auto flex flex-wrap items-center justify-between">
+            <a href="prompt_engineering_course_home.html" class="flex items-center space-x-3">
+                <span class="text-2xl font-bold">Prompt Engineering for Young Learners</span>
+            </a>
+            <div class="flex space-x-4">
+                <a href="prompt_engineering_course_home.html" class="nav-pill px-3 py-2 rounded-full bg-blue-700 hover:bg-blue-800">
+                    Home
+                </a>
+                <a href="#" class="nav-pill px-3 py-2 rounded-full bg-blue-800 hover:bg-blue-900">
+                    Module 1
+                </a>
+                <a href="prompt_engineering_module2.html" class="nav-pill px-3 py-2 rounded-full bg-blue-700 hover:bg-blue-800">
+                    Module 2
+                </a>
+                <a href="prompt_engineering_module3.html" class="nav-pill px-3 py-2 rounded-full bg-blue-700 hover:bg-blue-800">
+                    Module 3
+                </a>
+            </div>
+        </div>
     </nav>
 
-    <div class="container">
-        <main>
-            <h2>Module 1: What's AI and Why Talk to It?</h2>
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-blue-800 mb-4">Module 1: What is Prompt Engineering?</h1>
+            <div class="w-24 h-2 bg-yellow-400 mx-auto rounded-full mb-6"></div>
+            <p class="text-xl text-blue-600 max-w-3xl mx-auto">Let's learn how to talk to AI robots in a way they understand!</p>
+        </header>
 
-            <section class="learning-objectives">
-                <h3>What You'll Learn:</h3>
-                <ul>
-                    <li>Understand what AI is (like a super-smart helper).</li>
-                    <li>Learn why giving good instructions (prompts) is important.</li>
-                    <li>See examples of AI in everyday life.</li>
-                </ul>
-            </section>
+        <!-- Learning Objectives -->
+        <section class="mb-12 bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold text-blue-700 mb-4">
+                <i class="fas fa-bullseye text-red-500 mr-2"></i> Learning Objectives
+            </h2>
+            <p class="mb-4">By the end of this module, you will be able to:</p>
+            <ul class="space-y-2 ml-6">
+                <li class="flex items-start">
+                    <span class="text-green-500 mr-2">✓</span> 
+                    <span>Explain what prompt engineering is in your own words</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-green-500 mr-2">✓</span> 
+                    <span>Understand why giving good instructions to AI is important</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-green-500 mr-2">✓</span> 
+                    <span>Identify the difference between good and bad prompts</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-green-500 mr-2">✓</span> 
+                    <span>Create your first simple prompt</span>
+                </li>
+            </ul>
+        </section>
 
-            <hr>
-
-            <section class="storyline">
-                <p><strong>Story Time:</strong> Hi there! I\"m Sparky, your friendly AI guide! Ever wondered about those super-smart computer brains everyone talks about? That\"s Artificial Intelligence, or AI for short. Let\"s explore this amazing world together!</p>
-                <img src=\"images/sparky_mascot_candidate.jpeg\" alt=\"Sparky the AI Mascot\" style=\"width: 150px; float: right; margin: 0 0 10px 10px; border-radius: 50%;\">          </section>
-
-            <section class="content">
-                <h3>Let's Dive In!</h3>
-                <p>Imagine you found a magic genie lamp! The genie (that's kind of like AI) can grant wishes, but only if you ask clearly. If you just mumble 'want stuff', the genie gets confused. But if you say 'I wish for a giant chocolate cake with sprinkles!', the genie knows exactly what to do. AI is similar! It needs clear instructions, called <strong>prompts</strong>, to understand what you want it to do.</p>
-                <p>So, what <em>is</em> AI? Think of it as computer programs designed to do tasks that usually need human smarts, like learning, solving problems, or understanding language. And a <strong>prompt</strong>? That's just the instruction you give to an AI. You've probably already used AI without even realizing it! Think about asking a voice assistant on a phone for the weather, or how characters in video games seem to react to what you do. That's AI in action!</p>
-            </section>
-
-            <section class="interactive-elements">
-                <h3>Try It Out!</h3>
-                <div class="quiz">                    <h4>Quick Quiz: Is This AI?</h4>
-                    <div id="quiz-m1-q1">
-                        <p><strong>Question 1:</strong> Your smart speaker playing music when you ask?</p>
-                        <label><input type="radio" name="m1q1" value="yes"> Yes, that uses AI!</label><br>
-                        <label><input type="radio" name="m1q1" value="no"> No, that's just a regular speaker.</label><br>
-                        <button onclick="checkAnswer(\'m1q1\', \'yes\', \'feedback-m1-q1\')">Check Answer</button>
-                        <p id="feedback-m1-q1" style="font-weight: bold;"></p>
-                    </div>
-                    <div id="quiz-m1-q2" style="margin-top: 15px;">
-                        <p><strong>Question 2:</strong> A character in your video game dodging an obstacle?</p>
-                        <label><input type="radio" name="m1q2" value="yes"> Yes, that uses AI!</label><br>
-                        <label><input type="radio" name="m1q2" value="no"> No, that's just programmed movement.</label><br>
-                        <button onclick="checkAnswer(\'m1q2\', \'yes\', \'feedback-m1-q2\')">Check Answer</button>
-                        <p id="feedback-m1-q2" style="font-weight: bold;"></p>
-                    </div>
-                    <div id="quiz-m1-q3" style="margin-top: 15px;">
-                        <p><strong>Question 3:</strong> Your calculator adding numbers?</p>
-                        <label><input type="radio" name="m1q3" value="yes"> Yes, that uses AI!</label><br>
-                        <label><input type="radio" name="m1q3" value="no"> No, that's just basic calculation.</label><br>
-                        <button onclick="checkAnswer(\'m1q3\', \'no\', \'feedback-m1-q3\')">Check Answer</button>
-                        <p id="feedback-m1-q3" style="font-weight: bold;"></p>
-                    </div>                </div>
-                <div class="drag-drop">
-                    <h4>Mix & Match: AI Tasks</h4>
-                    <p>Drag the task to the correct AI helper!</p>
-                    <div style="display: flex; justify-content: space-around; margin-top: 10px;">
-                        <div id="m1-drag-tasks" style="border: 1px solid #ccc; padding: 10px; min-height: 100px; width: 45%;">
-                            <p><strong>Tasks:</strong></p>
-                            <div id="m1-task1" draggable="true" ondragstart="drag(event)" style="background-color: #add8e6; padding: 5px; margin: 5px; cursor: grab;">Playing Chess</div>
-                            <div id="m1-task2" draggable="true" ondragstart="drag(event)" style="background-color: #add8e6; padding: 5px; margin: 5px; cursor: grab;">Getting Weather Forecast</div>
-                            <div id="m1-task3" draggable="true" ondragstart="drag(event)" style="background-color: #add8e6; padding: 5px; margin: 5px; cursor: grab;">Translating Languages</div>
-                        </div>
-                        <div id="m1-drop-zones" style="border: 1px solid #ccc; padding: 10px; min-height: 100px; width: 45%;">
-                            <p><strong>AI Helpers:</strong></p>
-                            <div id="m1-zone-game" ondrop="drop(event)" ondragover="allowDrop(event)" data-task="m1-task1" style="border: 1px dashed #999; padding: 10px; margin: 5px; min-height: 30px;">Game AI</div>
-                            <div id="m1-zone-voice" ondrop="drop(event)" ondragover="allowDrop(event)" data-task="m1-task2" style="border: 1px dashed #999; padding: 10px; margin: 5px; min-height: 30px;">Voice Assistant</div>
-                            <div id="m1-zone-translate" ondrop="drop(event)" ondragover="allowDrop(event)" data-task="m1-task3" style="border: 1px dashed #999; padding: 10px; margin: 5px; min-height: 30px;">Translation App</div>
-                        </div>
-                    </div>
-                    <p id="feedback-m1-drag" style="font-weight: bold; margin-top: 10px;"></p>               </div>
-                 <div class="chat-sim">
-                    <h4>Chat with Sparky!</h4>
-                    <div id="chat-m1" style="border: 1px solid #ccc; padding: 10px; height: 150px; overflow-y: scroll; margin-bottom: 10px; background-color: #f9f9f9;">
-                        <p><strong>Sparky:</strong> Hi! It's great to meet you! Ready to learn about prompts?</p>
-                        <!-- Chat messages will appear here -->
-                    </div>
-                    <input type="text" id="chat-input-m1" placeholder="Your message to Sparky..." style="width: 70%; padding: 8px;">
-                    <button onclick="sendChatMessage(\'m1\')">Send</button>
+        <!-- Introduction -->
+        <section class="mb-12">
+            <div class="bg-blue-100 p-6 rounded-lg shadow-md mb-8">
+                <h2 class="text-2xl font-bold text-blue-700 mb-4">
+                    <i class="fas fa-robot text-blue-500 mr-2"></i> What is Prompt Engineering?
+                </h2>
+                <p class="mb-4">Have you ever played with a robot toy or a smart assistant like Alexa or Siri? When you talk to them, you need to speak clearly so they understand what you want.</p>
+                <p class="mb-4"><span class="font-bold text-purple-700">Prompt engineering</span> is like that, but for AI (Artificial Intelligence) helpers that understand written instructions. It's the art of writing good instructions that help AI understand exactly what you want it to do!</p>
+                <div class="example-box bg-white p-4 pl-6 rounded-md mt-4">
+                    <p class="font-bold mb-2">Think of it like this:</p>
+                    <p>When you ask your friend to draw a picture, you need to be specific about what you want. If you just say "draw something," they might draw anything! But if you say "draw a blue dragon flying over a castle with fire coming out of its mouth," they'll know exactly what you want.</p>
                 </div>
-            </section>
+            </div>
 
-            <hr>
-
-            <section class="summary">
-                <h3>Quick Recap!</h3>
-                <p>Awesome job exploring the basics! We learned that AI is like a super-smart helper that needs clear instructions called prompts. We also saw that AI is already part of our world!</p>
-                <ul>
-                    <li>AI stands for Artificial Intelligence - smart computer programs.</li>
-                    <li>Prompts are the instructions we give to AI.</li>
-                    <li>Clear prompts help AI understand what we want.</li>
+            <!-- Why It Matters -->
+            <div class="bg-yellow-100 p-6 rounded-lg shadow-md">
+                <h2 class="text-2xl font-bold text-yellow-700 mb-4">
+                    <i class="fas fa-question-circle text-yellow-500 mr-2"></i> Why Does Prompt Engineering Matter?
+                </h2>
+                <p class="mb-4">AI helpers are like super-smart but very literal robots. They will do exactly what you ask, but they can't read your mind!</p>
+                <p class="mb-4">If your instructions (prompts) are confusing or too vague, the AI might:</p>
+                <ul class="space-y-2 ml-6">
+                    <li class="flex items-start">
+                        <span class="text-red-500 mr-2">✗</span> 
+                        <span>Give you the wrong information</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-red-500 mr-2">✗</span> 
+                        <span>Create something you didn't want</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-red-500 mr-2">✗</span> 
+                        <span>Not understand what you're asking for</span>
+                    </li>
                 </ul>
-            </section>
+                <p class="mt-4">But if your prompts are clear and detailed, the AI can help you with homework, write stories, create art, answer questions, and so much more!</p>
+            </div>
+        </section>
 
-        </main>
+        <!-- Real-World Analogies -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-blue-700 mb-6">
+                <i class="fas fa-lightbulb text-yellow-500 mr-2"></i> Understanding Prompts with Real-Life Examples
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Recipe Card -->
+                <div class="card bg-green-100 p-6">
+                    <h3 class="text-xl font-bold text-green-700 mb-3">It's Like Following a Recipe! 🍪</h3>
+                    <p class="mb-3">Imagine you're baking cookies with a friend who has never baked before.</p>
+                    
+                    <div class="bg-white p-4 rounded-md mb-3">
+                        <p class="font-bold text-red-500 mb-1">Bad Instructions:</p>
+                        <p>"Make some cookies."</p>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-md">
+                        <p class="font-bold text-green-500 mb-1">Good Instructions:</p>
+                        <p>"Mix 2 cups of flour, 1 cup of sugar, 2 eggs, and 1 stick of butter. Add chocolate chips. Bake at 350°F for 10 minutes until golden brown."</p>
+                    </div>
+                    
+                    <p class="mt-3">The second set of instructions is much clearer and will give you the cookies you want!</p>
+                </div>
+                
+                <!-- Treasure Hunt Card -->
+                <div class="card bg-purple-100 p-6">
+                    <h3 class="text-xl font-bold text-purple-700 mb-3">It's Like a Treasure Hunt Map! 🗺️</h3>
+                    <p class="mb-3">Imagine giving directions to find a hidden treasure in your school.</p>
+                    
+                    <div class="bg-white p-4 rounded-md mb-3">
+                        <p class="font-bold text-red-500 mb-1">Bad Map:</p>
+                        <p>"The treasure is somewhere in the school. Good luck!"</p>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-md">
+                        <p class="font-bold text-green-500 mb-1">Good Map:</p>
+                        <p>"Start at the front door. Turn right and walk 20 steps to the library. Look under the third table from the window. The treasure is in a blue box."</p>
+                    </div>
+                    
+                    <p class="mt-3">With the detailed map, you'd find the treasure quickly!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Good vs Bad Prompts -->
+        <section class="mb-12 bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold text-blue-700 mb-6">
+                <i class="fas fa-thumbs-up text-green-500 mr-2"></i> Good vs. Bad Prompts
+            </h2>
+            
+            <div class="mb-8">
+                <h3 class="text-xl font-bold text-red-600 mb-3">Bad Prompts: Too Vague or Confusing</h3>
+                <div class="border border-red-300 rounded-lg p-4 bg-red-50">
+                    <p class="font-bold mb-2">Example: "Write a story."</p>
+                    <p class="italic text-gray-600">Why it's bad: The AI doesn't know what kind of story you want, how long it should be, who the characters are, or what should happen.</p>
+                </div>
+            </div>
+            
+            <div>
+                <h3 class="text-xl font-bold text-green-600 mb-3">Good Prompts: Clear, Specific, and Detailed</h3>
+                <div class="border border-green-300 rounded-lg p-4 bg-green-50">
+                    <p class="font-bold mb-2">Example: "Write a short adventure story about a 12-year-old girl named Zoe who discovers a secret door in her school library that leads to a magical world. The story should be exciting but not scary, and should end with Zoe returning home safely."</p>
+                    <p class="italic text-gray-600">Why it's good: The AI knows exactly what kind of story to write, who the main character is, what happens, and how it should end.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Quiz -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-blue-700 mb-6">
+                <i class="fas fa-question-circle text-orange-500 mr-2"></i> Let's Test Your Knowledge!
+            </h2>
+            
+            <div class="bg-white p-6 rounded-lg shadow-md" id="quiz-container">
+                <h3 class="text-xl font-bold mb-4">Mini-Quiz: Prompt Engineering Basics</h3>
+                
+                <!-- Question 1 -->
+                <div class="mb-8 quiz-question">
+                    <p class="font-bold mb-3">1. What is prompt engineering?</p>
+                    <div class="space-y-2">
+                        <div class="quiz-option p-3 border rounded-lg border-gray-300 hover:bg-blue-50" data-correct="true">
+                            A) The art of giving clear instructions to AI
+                        </div>
+                        <div class="quiz-option p-3 border rounded-lg border-gray-300 hover:bg-blue-50">
+                            B) Building robots that can talk
+                        </div>
+                        <div class="quiz-option p-3 border rounded-lg border-gray-300 hover:bg-blue-50">
+                            C) Programming computers using code
+                        </div>
+                        <div class="quiz-option p-3 border rounded-lg border-gray-300 hover:bg-blue-50">
+                            D) Creating art with a computer
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Question 2 -->
+                <div class="mb-8 quiz-question">
+                    <p class="font-bold mb-3">2. Which of these is a better prompt?</p>
+                    <div class="space-y-2">
+                        <div class="quiz-option p-3 border rounded-lg border-gray-300 hover:bg-blue-50">
+                            A) "Draw a picture."
+                        </div>
+                        <div class="quiz-option p-3 border rounded-lg border-gray-300 hover:bg-blue-50" data-correct="true">
+                            B) "Draw a colorful picture of a red dragon flying over a castle at sunset."
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Question 3 -->
+                <div class="mb-8 quiz-question">
+                    <p class="font-bold mb-3">3. Why is being specific important when writing prompts?</p>
+                    <div class="space-y-2">
+                        <div class="quiz-option p-3 border rounded-lg border-gray-300 hover:bg-blue-50">
+                            A) It makes your prompt longer
+                        </div>
+                        <div class="quiz-option p-3 border rounded-lg border-gray-300 hover:bg-blue-50">
+                            B) It shows how smart you are
+                        </div>
+                        <div class="quiz-option p-3 border rounded-lg border-gray-300 hover:bg-blue-50" data-correct="true">
+                            C) It helps the AI understand exactly what you want
+                        </div>
+                        <div class="quiz-option p-3 border rounded-lg border-gray-300 hover:bg-blue-50">
+                            D) It makes the AI work harder
+                        </div>
+                    </div>
+                </div>
+                
+                <button id="check-answers" class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition duration-300">
+                    Check My Answers
+                </button>
+                
+                <div id="quiz-results" class="mt-4 p-4 rounded-lg hidden">
+                    <!-- Results will appear here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Try It Yourself -->
+        <section class="mb-12 bg-purple-100 p-6 rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold text-purple-700 mb-6">
+                <i class="fas fa-pencil-alt text-purple-500 mr-2"></i> Try It Yourself!
+            </h2>
+            
+            <p class="mb-4">Now it's your turn to practice writing a good prompt. Think about what makes a prompt clear and specific.</p>
+            
+            <div class="mb-6">
+                <label for="prompt-exercise" class="block font-bold mb-2">Write a prompt asking an AI to create a superhero:</label>
+                <textarea id="prompt-exercise" rows="4" class="w-full p-3 border rounded-lg focus:ring focus:ring-blue-300 focus:outline-none" placeholder="Type your prompt here..."></textarea>
+            </div>
+            
+            <div class="bg-white p-4 rounded-lg mb-4">
+                <p class="font-bold">Remember to include:</p>
+                <ul class="ml-6 list-disc">
+                    <li>The superhero's name</li>
+                    <li>Their special powers</li>
+                    <li>What they look like</li>
+                    <li>What kind of personality they have</li>
+                    <li>What their mission is</li>
+                </ul>
+            </div>
+            
+            <button id="save-prompt" class="bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700 transition duration-300">
+                Save My Prompt
+            </button>
+            
+            <div id="prompt-feedback" class="mt-4 p-4 rounded-lg hidden">
+                <!-- Feedback will appear here -->
+            </div>
+        </section>
+
+        <!-- Summary -->
+        <section class="mb-8 bg-blue-100 p-6 rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold text-blue-700 mb-4">
+                <i class="fas fa-check-circle text-green-500 mr-2"></i> Module Summary
+            </h2>
+            
+            <div class="space-y-3">
+                <p>In this module, we learned:</p>
+                <ul class="space-y-2 ml-6">
+                    <li class="flex items-start">
+                        <span class="text-green-500 mr-2">✓</span> 
+                        <span>Prompt engineering is the art of giving clear instructions to AI</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-green-500 mr-2">✓</span> 
+                        <span>Good prompts are specific, clear, and detailed</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-green-500 mr-2">✓</span> 
+                        <span>Being specific helps the AI understand exactly what you want</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-green-500 mr-2">✓</span> 
+                        <span>Writing prompts is like giving directions or writing a recipe</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="mt-6 p-4 bg-yellow-100 rounded-lg border-l-4 border-yellow-500">
+                <p class="font-bold">Quick Tip:</p>
+                <p>Remember, the more details you give, the better results you'll get. But don't worry about being perfect! Prompt engineering is a skill that gets better with practice.</p>
+            </div>
+        </section>
+
+        <!-- Navigation to Next Module -->
+        <div class="text-center">
+            <a href="prompt_engineering_module2.html" class="inline-block bg-green-600 text-white px-8 py-3 rounded-full text-lg font-bold hover:bg-green-700 transition duration-300 shadow-lg">
+                Continue to Module 2: Creating Your First Prompts
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
     </div>
 
-    <footer>
-        <p>&copy; 2025 Prompt Power Course. Let's learn together!</p>
+    <!-- Footer -->
+    <footer class="bg-blue-800 text-white p-6 mt-12">
+        <div class="container mx-auto text-center">
+            <p>Prompt Engineering for Young Learners - Module 1</p>
+            <p class="mt-2">© 2023 AI Education for Kids</p>
+        </div>
     </footer>
 
-    <!-- Optional JS for interactivity later -->
-    <script src="js/scripts.js"></script>
-
-</body>
-</html>
+    <script>
+        // Quiz functionality
+        document.getElementById('check-answers').addEventListener('click', function() {
+            let correctAnswers =
