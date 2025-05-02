@@ -3,126 +3,802 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prompt Power! - Module 3: Supercharging</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Module 3: Types of AI Responses</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: #f0f9ff;
+            color: #333;
+        }
+        .module-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .nav-link {
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 20px;
+            transition: background-color 0.3s;
+        }
+        .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        .active {
+            background-color: rgba(255, 255, 255, 0.3);
+            font-weight: bold;
+        }
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: white;
+        }
+        .objectives li, .summary li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 30px;
+        }
+        .objectives li:before {
+            content: "🎯";
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .summary li:before {
+            content: "✨";
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .response-type {
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            transition: transform 0.3s;
+        }
+        .response-type:hover {
+            transform: scale(1.02);
+        }
+        .drag-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+        .drag-item {
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: grab;
+            border: 2px dashed #ccc;
+        }
+        .drop-area {
+            min-height: 60px;
+            margin: 5px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 2px solid #ccc;
+            background-color: #f9f9f9;
+        }
+        .game-card {
+            perspective: 1000px;
+            height: 200px;
+            margin-bottom: 20px;
+        }
+        .game-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        .game-card.flipped .game-card-inner {
+            transform: rotateY(180deg);
+        }
+        .game-card-front, .game-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .game-card-front {
+            background-color: #e0f7fa;
+            color: #006064;
+        }
+        .game-card-back {
+            background-color: #b2ebf2;
+            color: #00363a;
+            transform: rotateY(180deg);
+        }
+        .btn {
+            padding: 10px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-align: center;
+            font-weight: bold;
+        }
+        .btn-primary {
+            background-color: #2563eb;
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: #1e40af;
+        }
+        .btn-secondary {
+            background-color: #9333ea;
+            color: white;
+        }
+        .btn-secondary:hover {
+            background-color: #7e22ce;
+        }
+        .btn-accent {
+            background-color: #f59e0b;
+            color: white;
+        }
+        .btn-accent:hover {
+            background-color: #d97706;
+        }
+        .btn-success {
+            background-color: #10b981;
+            color: white;
+        }
+        .btn-success:hover {
+            background-color: #059669;
+        }
+        .ribbon {
+            position: absolute;
+            right: -5px;
+            top: -5px;
+            z-index: 1;
+            overflow: hidden;
+            width: 75px;
+            height: 75px;
+            text-align: right;
+        }
+        .ribbon span {
+            font-size: 10px;
+            font-weight: bold;
+            color: #FFF;
+            text-transform: uppercase;
+            text-align: center;
+            line-height: 20px;
+            transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+            width: 100px;
+            display: block;
+            background: #79A70A;
+            background: linear-gradient(#9BC90D 0%, #79A70A 100%);
+            box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+            position: absolute;
+            top: 19px;
+            right: -21px;
+        }
+    </style>
 </head>
 <body>
-
-    <header>
-        <h1>Prompt Power! Your Guide to Talking to AI</h1>
-    </header>
-
-    <nav>
-        <ul>
-            <li><a href="module1.html" class="">Module 1: What's AI?</a></li>
-            <li><a href="module2.html" class="">Module 2: First Prompts</a></li>
-            <li><a href="module3.html" class="active">Module 3: Supercharging</a></li>
-            <li><a href="module4.html" class="">Module 4: Prompts in the Wild</a></li>
-            <li><a href="module5.html" class="">Module 5: You're a Pro!</a></li>
-        </ul>
+    <!-- Navigation Bar -->
+    <nav class="bg-gradient-to-r from-blue-500 to-purple-600 p-4 sticky top-0 z-50">
+        <div class="container mx-auto flex flex-wrap justify-between items-center">
+            <div class="flex items-center">
+                <span class="text-white text-xl font-bold mr-4">🧠 Prompt Engineering for Young Learners</span>
+            </div>
+            <div class="flex flex-wrap">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="module1.html" class="nav-link">Module 1: What is Prompt Engineering?</a>
+                <a href="module2.html" class="nav-link">Module 2: Creating Great Prompts</a>
+                <a href="module3.html" class="nav-link active">Module 3: Types of AI Responses</a>
+                <a href="#" class="nav-link">Module 4: Advanced Techniques</a>
+            </div>
+        </div>
     </nav>
 
-    <div class="container">
-        <main>
-            <h2>Module 3: Supercharging Your Prompts - Tips & Tricks</h2>
+    <div class="module-container">
+        <!-- Module Header -->
+        <header class="text-center py-8">
+            <h1 class="text-4xl font-bold text-purple-600 mb-4">Module 3: Types of AI Responses</h1>
+            <p class="text-xl text-gray-600">Discover the different kinds of responses you can get from AI</p>
+        </header>
 
-            <section class="learning-objectives">
-                <h3>What You'll Learn:</h3>
-                <ul>
-                    <li>Learn cool techniques like telling the AI who to be (setting a role) or how to sound (setting the tone).</li>
-                    <li>Understand how to ask for answers in specific formats, like lists or poems.</li>
-                    <li>Explore how asking follow-up questions can make the AI's answers even better.</li>
-                </ul>
-            </section>
+        <!-- Learning Objectives -->
+        <div class="card bg-blue-50 mb-8">
+            <h2 class="text-2xl font-bold text-blue-700 mb-4">Learning Objectives</h2>
+            <ul class="objectives">
+                <li>Understand the different types of responses AI can generate</li>
+                <li>Learn how to identify what kind of response you need for your task</li>
+                <li>Practice writing prompts that get specific response types</li>
+                <li>Play detective and guess what prompts created certain responses</li>
+            </ul>
+        </div>
 
-            <hr>
-            <section class="storyline">
-                <p><strong>Story Time:</strong> Ready to level up your prompt skills? Now that you know the basics, let\"s learn some awesome tricks! Think of yourself as a movie director, and the AI is your actor. You need to give specific directions to get the perfect performance!</p>
-                 <img src=\"images/sparky_mascot_candidate.jpeg\" alt=\"Sparky the AI Mascot\" style=\"width: 120px; display: block; margin: 10px auto; border-radius: 10px;\">
-            </section>
+        <!-- Introduction -->
+        <div class="card mb-8">
+            <h2 class="text-2xl font-bold text-purple-600 mb-4">Did You Know?</h2>
+            <p class="text-lg mb-4">
+                Just like you can ask a question in different ways, AI can answer in different ways too! 
+                Think of AI as a super-smart friend who can talk to you in many different styles.
+            </p>
+            <p class="text-lg">
+                In this module, we'll explore the different "flavors" of AI responses and how to get exactly the type of answer you want!
+            </p>
+        </div>
 
-            <section class="content">
-                <h3>Let's Dive In!</h3>
-                <p>Just like a director tells an actor how to play a part, you can tell the AI how to act! Try starting your prompt with "<strong>Act as a...</strong>". For example, "Act as a pirate captain and explain gravity." This tells the AI to adopt a specific personality!</p>
-                <p>You can also set the <strong>tone</strong>. Want a funny story? Add "in a funny tone". Need a serious explanation? Ask for it "in a serious tone". You're the director!</p>
-                <p>What if you need the answer in a special way? Just ask! You can tell the AI to "Write the answer as a bulleted list," or "Explain this concept in a short poem," or "Summarize this in one sentence." Don't be afraid to ask for the <strong>format</strong> you need.</p>
-                <p>Sometimes the AI's first answer isn't quite right. That's okay! Just like talking to a person, you can ask follow-up questions. Try things like: "Can you explain that differently?", "Tell me more about the second point," or "Make it simpler." This is called <strong>iteration</strong> – trying again to make it better!</p>
-            </section>
-
-            <section class="interactive-elements">
-                <h3>Try It Out!</h3>
-                <div class="drag-drop">
-                    <h4>Mix & Match: Prompt Techniques</h4>
-                    <p>Drag the technique to the prompt that uses it best!</p>
-                    <div style="display: flex; justify-content: space-around; margin-top: 10px;">
-                        <div id="m3-drag-techs" style="border: 1px solid #ccc; padding: 10px; min-height: 120px; width: 45%;">
-                            <p><strong>Techniques:</strong></p>
-                            <div id="m3-tech1" draggable="true" ondragstart="drag(event)" style="background-color: #add8e6; padding: 5px; margin: 5px; cursor: grab;">Setting a Role</div>
-                            <div id="m3-tech2" draggable="true" ondragstart="drag(event)" style="background-color: #add8e6; padding: 5px; margin: 5px; cursor: grab;">Setting the Tone</div>
-                            <div id="m3-tech3" draggable="true" ondragstart="drag(event)" style="background-color: #add8e6; padding: 5px; margin: 5px; cursor: grab;">Asking for Format</div>
-                            <div id="m3-tech4" draggable="true" ondragstart="drag(event)" style="background-color: #add8e6; padding: 5px; margin: 5px; cursor: grab;">Iteration (Follow-up)</div>
-                        </div>
-                        <div id="m3-drop-zones" style="border: 1px solid #ccc; padding: 10px; min-height: 120px; width: 45%;">
-                            <p><strong>Prompts:</strong></p>
-                            <div id="m3-zone-role" ondrop="drop(event)" ondragover="allowDrop(event)" data-task="m3-tech1" style="border: 1px dashed #999; padding: 10px; margin: 5px; min-height: 30px;">"Act as a historian and explain the Roman Empire."</div>
-                            <div id="m3-zone-tone" ondrop="drop(event)" ondragover="allowDrop(event)" data-task="m3-tech2" style="border: 1px dashed #999; padding: 10px; margin: 5px; min-height: 30px;">"Write a scary ghost story."</div>
-                            <div id="m3-zone-format" ondrop="drop(event)" ondragover="allowDrop(event)" data-task="m3-tech3" style="border: 1px dashed #999; padding: 10px; margin: 5px; min-height: 30px;">"List the planets in order from the sun."</div>
-                            <div id="m3-zone-iterate" ondrop="drop(event)" ondragover="allowDrop(event)" data-task="m3-tech4" style="border: 1px dashed #999; padding: 10px; margin: 5px; min-height: 30px;">"Can you make that explanation simpler?"</div>
-                        </div>
+        <!-- Response Types -->
+        <h2 class="text-3xl font-bold text-center text-purple-600 mb-6">The AI Response Menu</h2>
+        
+        <div class="response-type bg-blue-100 border-l-4 border-blue-500">
+            <div class="flex items-start">
+                <div class="text-4xl mr-4">📚</div>
+                <div>
+                    <h3 class="text-xl font-bold text-blue-700">Informative Responses</h3>
+                    <p class="mb-2">These are factual, educational responses that give you information about a topic.</p>
+                    <div class="bg-white p-3 rounded-lg shadow-sm">
+                        <p class="font-bold">Example prompt:</p>
+                        <p class="italic">"Explain how rainbows form in simple terms."</p>
+                        <p class="font-bold mt-2">AI response:</p>
+                        <p>Rainbows form when sunlight shines through raindrops in the air. The water drops act like tiny prisms, splitting the sunlight into different colors. You need both sun and rain at the same time to see a rainbow, and you must be standing with your back to the sun. Each color you see (red, orange, yellow, green, blue, indigo, and violet) represents different wavelengths of light being bent by different amounts.</p>
                     </div>
-                    <p id="feedback-m3-drag" style="font-weight: bold; margin-top: 10px;"></p>               </div>
-                <div class="quiz">
-                    <h4>Quick Quiz: Choose the Best Prompt</h4>
-                    <div id="quiz-m3-q1">
-                        <p><strong>Goal:</strong> Get a list of healthy breakfast ideas.</p>
-                        <p><strong>Which prompt is best?</strong></p>
-                        <label><input type="radio" name="m3q1" value="a"> A) Tell me about breakfast.</label><br>
-                        <label><input type="radio" name="m3q1" value="b"> B) List 5 healthy breakfast ideas suitable for a busy morning.</label><br>
-                        <label><input type="radio" name="m3q1" value="c"> C) Healthy breakfast.</label><br>
-                        <button onclick="checkAnswer(\'m3q1\', \'b\', \'feedback-m3-q1\')">Check Answer</button>
-                        <p id="feedback-m3-q1" style="font-weight: bold;"></p>
-                    </div>
-                    <div id="quiz-m3-q2" style="margin-top: 15px;">
-                        <p><strong>Goal:</strong> Get a poem about a cat.</p>
-                        <p><strong>Which prompt uses a helpful technique?</strong></p>
-                        <label><input type="radio" name="m3q2" value="a"> A) Cat poem.</label><br>
-                        <label><input type="radio" name="m3q2" value="b"> B) Write about cats.</label><br>
-                        <label><input type="radio" name="m3q2" value="c"> C) Write a short, rhyming poem about a playful kitten.</label><br>
-                        <button onclick="checkAnswer(\'m3q2\', \'c\', \'feedback-m3-q2\')">Check Answer</button>
-                        <p id="feedback-m3-q2" style="font-weight: bold;"></p>
-                    </div>               </div>
-                 <div class="chat-sim">
-                    <h4>Chat with Sparky!</h4>
-                    <div id="chat-m3" style="border: 1px solid #ccc; padding: 10px; height: 150px; overflow-y: scroll; margin-bottom: 10px; background-color: #f9f9f9;">
-                        <p><strong>Sparky:</strong> Try asking me to explain photosynthesis acting as a cheerful robot!</p>
-                        <!-- Chat messages will appear here -->
-                    </div>
-                    <input type="text" id="chat-input-m3" placeholder="Your prompt for Sparky..." style="width: 70%; padding: 8px;">
-                    <button onclick="sendChatMessage(\'m3\')">Send Prompt</button>
                 </div>
-            </section>
+            </div>
+        </div>
+        
+        <div class="response-type bg-green-100 border-l-4 border-green-500">
+            <div class="flex items-start">
+                <div class="text-4xl mr-4">🎨</div>
+                <div>
+                    <h3 class="text-xl font-bold text-green-700">Creative Responses</h3>
+                    <p class="mb-2">These are imaginative, artistic responses that create something new!</p>
+                    <div class="bg-white p-3 rounded-lg shadow-sm">
+                        <p class="font-bold">Example prompt:</p>
+                        <p class="italic">"Write a short poem about a brave astronaut exploring a new planet."</p>
+                        <p class="font-bold mt-2">AI response:</p>
+                        <p>
+                            Boots on crimson dust, a pioneer stands tall,<br>
+                            Stars in their eyes, answering adventure's call.<br>
+                            Alien winds whisper secrets of old,<br>
+                            A brave explorer's heart, fearless and bold.<br>
+                            New horizons await beyond the cosmic sea,<br>
+                            One small step for them, one giant leap for humanity.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="response-type bg-yellow-100 border-l-4 border-yellow-500">
+            <div class="flex items-start">
+                <div class="text-4xl mr-4">📋</div>
+                <div>
+                    <h3 class="text-xl font-bold text-yellow-700">List-Based Responses</h3>
+                    <p class="mb-2">These are organized, structured responses that break information into clear points.</p>
+                    <div class="bg-white p-3 rounded-lg shadow-sm">
+                        <p class="font-bold">Example prompt:</p>
+                        <p class="italic">"List 5 ways kids can help protect the environment."</p>
+                        <p class="font-bold mt-2">AI response:</p>
+                        <ol class="list-decimal ml-6">
+                            <li>Turn off lights and electronics when not using them to save energy</li>
+                            <li>Use reusable water bottles instead of plastic ones</li>
+                            <li>Start a small garden or plant trees in your neighborhood</li>
+                            <li>Walk, bike, or take public transportation when possible</li>
+                            <li>Create a recycling station at home and learn what can be recycled</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="response-type bg-red-100 border-l-4 border-red-500">
+            <div class="flex items-start">
+                <div class="text-4xl mr-4">📖</div>
+                <div>
+                    <h3 class="text-xl font-bold text-red-700">Storytelling Responses</h3>
+                    <p class="mb-2">These are narrative responses that tell a story with characters and a plot.</p>
+                    <div class="bg-white p-3 rounded-lg shadow-sm">
+                        <p class="font-bold">Example prompt:</p>
+                        <p class="italic">"Tell a short story about a robot that learns to make friends."</p>
+                        <p class="font-bold mt-2">AI response:</p>
+                        <p>
+                            Beep lived in a small workshop at the edge of town. Unlike other robots who were programmed to perform specific tasks, Beep was programmed to learn. Every day, Beep watched children play in the park across the street, laughing and having fun together.
+                        </p>
+                        <p>
+                            "Why do humans gather like that?" Beep wondered. One day, Beep rolled into the park. The children stared, some backing away nervously.
+                        </p>
+                        <p>
+                            "Hello," beeped Beep. "May I join your game?"
+                        </p>
+                        <p>
+                            A brave girl named Maya stepped forward. "Do you know how to play tag?"
+                        </p>
+                        <p>
+                            "No," replied Beep, "but I can learn."
+                        </p>
+                        <p>
+                            Maya taught Beep the rules, and soon the robot was chasing and being chased, careful to tag gently. By sunset, Beep had learned something not in any programming: friendship feels like warm circuits and happy beeps.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="response-type bg-purple-100 border-l-4 border-purple-500">
+            <div class="flex items-start">
+                <div class="text-4xl mr-4">🧩</div>
+                <div>
+                    <h3 class="text-xl font-bold text-purple-700">Problem-Solving Responses</h3>
+                    <p class="mb-2">These are step-by-step responses that help solve a problem or complete a task.</p>
+                    <div class="bg-white p-3 rounded-lg shadow-sm">
+                        <p class="font-bold">Example prompt:</p>
+                        <p class="italic">"How do I make a simple paper airplane?"</p>
+                        <p class="font-bold mt-2">AI response:</p>
+                        <ol class="list-decimal ml-6">
+                            <li>Start with a rectangular piece of paper.</li>
+                            <li>Fold the paper in half lengthwise, then unfold it.</li>
+                            <li>Fold the top corners down to meet the center crease.</li>
+                            <li>Fold the top edges to the center line.</li>
+                            <li>Fold the paper in half along the original center line.</li>
+                            <li>Fold down the wings, about 1 inch from the bottom edge.</li>
+                            <li>Hold the paper airplane by the center fold at the bottom, and launch it gently!</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="response-type bg-indigo-100 border-l-4 border-indigo-500">
+            <div class="flex items-start">
+                <div class="text-4xl mr-4">🔍</div>
+                <div>
+                    <h3 class="text-xl font-bold text-indigo-700">Analytical Responses</h3>
+                    <p class="mb-2">These are responses that compare and contrast ideas or analyze information.</p>
+                    <div class="bg-white p-3 rounded-lg shadow-sm">
+                        <p class="font-bold">Example prompt:</p>
+                        <p class="italic">"Compare and contrast dogs and cats as pets."</p>
+                        <p class="font-bold mt-2">AI response:</p>
+                        <p><strong>Similarities:</strong></p>
+                        <ul class="list-disc ml-6 mb-2">
+                            <li>Both are popular household pets that provide companionship</li>
+                            <li>Both need regular feeding, veterinary care, and attention</li>
+                            <li>Both can form strong bonds with their human families</li>
+                        </ul>
+                        <p><strong>Differences:</strong></p>
+                        <ul class="list-disc ml-6">
+                            <li>Dogs typically require more outdoor exercise than cats</li>
+                            <li>Cats are generally more independent, while dogs often need more constant attention</li>
+                            <li>Dogs usually need to be walked outside for bathroom breaks, while cats use litter boxes</li>
+                            <li>Dogs tend to be more social and pack-oriented, while cats are often more territorial</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-            <hr>
+        <!-- Interactive Exercise: Matching Game -->
+        <div class="card mt-10 mb-8 relative overflow-hidden">
+            <div class="ribbon"><span>Interactive!</span></div>
+            <h2 class="text-2xl font-bold text-center text-purple-600 mb-6">🎮 Match the Prompt to the Response Type</h2>
+            <p class="text-center mb-4">Drag each prompt to match it with the correct response type!</p>
+            
+            <div id="matching-game" class="p-4 bg-gray-50 rounded-lg">
+                <div class="drag-container">
+                    <div class="drag-item bg-blue-200" draggable="true" data-type="informative">What causes thunder and lightning?</div>
+                    <div class="drag-item bg-green-200" draggable="true" data-type="creative">Create a new superhero with plant-based powers</div>
+                    <div class="drag-item bg-yellow-200" draggable="true" data-type="list">What are 7 healthy breakfast ideas for kids?</div>
+                    <div class="drag-item bg-red-200" draggable="true" data-type="story">Tell me about a day in the life of a shoe</div>
+                    <div class="drag-item bg-purple-200" draggable="true" data-type="problem-solving">How can I build a bird feeder from recycled materials?</div>
+                    <div class="drag-item bg-indigo-200" draggable="true" data-type="analytical">What are the pros and cons of having a class pet?</div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+                    <div>
+                        <h3 class="font-bold text-blue-700 mb-2">Informative Response:</h3>
+                        <div class="drop-area" data-type="informative"></div>
+                        
+                        <h3 class="font-bold text-green-700 mb-2 mt-4">Creative Response:</h3>
+                        <div class="drop-area" data-type="creative"></div>
+                        
+                        <h3 class="font-bold text-yellow-700 mb-2 mt-4">List-Based Response:</h3>
+                        <div class="drop-area" data-type="list"></div>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-red-700 mb-2">Storytelling Response:</h3>
+                        <div class="drop-area" data-type="story"></div>
+                        
+                        <h3 class="font-bold text-purple-700 mb-2 mt-4">Problem-Solving Response:</h3>
+                        <div class="drop-area" data-type="problem-solving"></div>
+                        
+                        <h3 class="font-bold text-indigo-700 mb-2 mt-4">Analytical Response:</h3>
+                        <div class="drop-area" data-type="analytical"></div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-6">
+                    <button id="check-matches" class="btn btn-primary">Check My Answers</button>
+                    <button id="reset-matches" class="btn btn-secondary ml-4">Reset Game</button>
+                </div>
+                <div id="match-feedback" class="mt-4 text-center hidden"></div>
+            </div>
+        </div>
 
-            <section class="summary">
-                <h3>Quick Recap!</h3>
-                <p>Wow, you're becoming a prompt master! You learned some super useful tricks to get even better results from AI.</p>
-                <ul>
-                    <li>Tell the AI who to be ("Act as a...").</li>
-                    <li>Set the mood by defining the tone.</li>
-                    <li>Ask for specific formats (lists, poems, etc.).</li>
-                    <li>Ask follow-up questions (iterate) to improve answers.</li>
-                </ul>
-            </section>
+        <!-- AI Response Detective Game -->
+        <div class="card mt-10 mb-8 relative overflow-hidden">
+            <div class="ribbon"><span>Game Time!</span></div>
+            <h2 class="text-2xl font-bold text-center text-purple-600 mb-6">🕵️‍♀️ AI Response Detective</h2>
+            <p class="text-center mb-6">Here's a fun challenge! Can you guess what prompt was used to generate these AI responses? Click the cards to reveal the original prompts!</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="game-card">
+                    <div class="game-card-inner">
+                        <div class="game-card-front">
+                            <h3 class="text-xl font-bold mb-2">Response #1</h3>
+                            <p>The three main states of matter are solids, liquids, and gases. Solids have a fixed shape and volume, liquids have a fixed volume but take the shape of their container, and gases have neither fixed shape nor volume.</p>
+                            <button class="btn btn-accent mt-4 reveal-prompt">Reveal the Prompt</button>
+                        </div>
+                        <div class="game-card-back">
+                            <h3 class="text-xl font-bold mb-2">The Original Prompt:</h3>
+                            <p class="italic">"Explain the three states of matter in a way a 7th grader would understand."</p>
+                            <p class="mt-2"><strong>Type:</strong> Informative Response</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="game-card">
+                    <div class="game-card-inner">
+                        <div class="game-card-front">
+                            <h3 class="text-xl font-bold mb-2">Response #2</h3>
+                            <ol>
+                                <li>Set a specific bedtime and wake-up time</li>
+                                <li>Avoid screens at least 1 hour before bed</li>
+                                <li>Create a relaxing bedtime routine</li>
+                                <li>Make your bedroom cool, dark, and quiet</li>
+                                <li>Exercise regularly, but not right before bedtime</li>
+                            </ol>
+                            <button class="btn btn-accent mt-4 reveal-prompt">Reveal the Prompt</button>
+                        </div>
+                        <div class="game-card-back">
+                            <h3 class="text-xl font-bold mb-2">The Original Prompt:</h3>
+                            <p class="italic">"List 5 tips for getting better sleep at night."</p>
+                            <p class="mt-2"><strong>Type:</strong> List-Based Response</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="game-card">
+                    <div class="game-card-inner">
+                        <div class="game-card-front">
+                            <h3 class="text-xl font-bold mb-2">Response #3</h3>
+                            <p>Mia stared at the old wooden door. No one in town ever talked about what was behind it, but a strange blue light leaked from underneath. Taking a deep breath, she turned the rusty knob. Inside was not what she expected: thousands of butterflies with glowing wings, creating the most beautiful light show she had ever seen.</p>
+                            <button class="btn btn-accent mt-4 reveal-prompt">Reveal the Prompt</button>
+                        </div>
+                        <div class="game-card-back">
+                            <h3 class="text-xl font-bold mb-2">The Original Prompt:</h3>
+                            <p class="italic">"Write a short story about a child discovering something magical."</p>
+                            <p class="mt-2"><strong>Type:</strong> Storytelling Response</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="game-card">
+                    <div class="game-card-inner">
+                        <div class="game-card-front">
+                            <h3 class="text-xl font-bold mb-2">Response #4</h3>
+                            <p>Bicycles and skateboards are both popular for transportation and fun. Bicycles generally travel faster and handle rough terrain better, while skateboards are more portable and allow for more tricks. Bicycles use pedals for movement, while skateboards require pushing with your foot. Both require good balance, but the balancing technique differs significantly between them.</p>
+                            <button class="btn btn-accent mt-4 reveal-prompt">Reveal the Prompt</button>
+                        </div>
+                        <div class="game-card-back">
+                            <h3 class="text-xl font-bold mb-2">The Original Prompt:</h3>
+                            <p class="italic">"Compare bicycles and skateboards."</p>
+                            <p class="mt-2"><strong>Type:</strong> Analytical Response</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        </main>
+        <!-- Create Your Own -->
+        <div class="card mt-10 mb-8">
+            <h2 class="text-2xl font-bold text-center text-purple-600 mb-6">🎭 Response Type Practice</h2>
+            <p class="mb-4">Now it's your turn to practice! For each response type, write a prompt that would generate that type of response.</p>
+            
+            <div class="bg-blue-50 p-4 rounded-lg mb-4">
+                <p class="font-bold mb-2">For an Informative Response, I might write:</p>
+                <p class="italic">"How do volcanoes work?"</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-green-50 p-4 rounded-lg">
+                    <p class="font-bold mb-2">For a Creative Response, you could write:</p>
+                    <textarea class="w-full p-2 border rounded" rows="2" placeholder="Write your creative prompt here..."></textarea>
+                </div>
+                
+                <div class="bg-yellow-50 p-4 rounded-lg">
+                    <p class="font-bold mb-2">For a List-Based Response, you could write:</p>
+                    <textarea class="w-full p-2 border rounded" rows="2" placeholder="Write your list prompt here..."></textarea>
+                </div>
+                
+                <div class="bg-red-50 p-4 rounded-lg">
+                    <p class="font-bold mb-2">For a Storytelling Response, you could write:</p>
+                    <textarea class="w-full p-2 border rounded" rows="2" placeholder="Write your storytelling prompt here..."></textarea>
+                </div>
+                
+                <div class="bg-purple-50 p-4 rounded-lg">
+                    <p class="font-bold mb-2">For a Problem-Solving Response, you could write:</p>
+                    <textarea class="w-full p-2 border rounded" rows="2" placeholder="Write your problem-solving prompt here..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pro Tips -->
+        <div class="card bg-indigo-50 mb-8">
+            <h2 class="text-2xl font-bold text-indigo-700 mb-4">💡 Pro Tips for Getting the Right Response Type</h2>
+            <ul class="space-y-4">
+                <li class="flex">
+                    <span class="text-2xl mr-3">🔍</span>
+                    <div>
+                        <span class="font-bold">Be specific about what you want:</span> Start with words like "Explain," "List," "Write a story about," or "Compare" to signal the type of response.
+                    </div>
+                </li>
+                <li class="flex">
+                    <span class="text-2xl mr-3">📏</span>
+                    <div>
+                        <span class="font-bold">Specify length if needed:</span> Say "in a paragraph" or "in 5 bullet points" to control how long the response is.
+                    </div>
+                </li>
+                <li class="flex">
+                    <span class="text-2xl mr-3">🎭</span>
+                    <div>
+                        <span class="font-bold">Set the tone:</span> Ask for a "fun explanation" or a "serious analysis" to get the right feel.
+                    </div>
+                </li>
+                <li class="flex">
+                    <span class="text-2xl mr-3">👥</span>
+                    <div>
+                        <span class="font-bold">Specify the audience:</span> Say "explain to a 7th grader" or "write for a science journal" to set the complexity level.
+                    </div>
+                </li>
+                <li class="flex">
+                    <span class="text-2xl mr-3">🔄</span>
+                    <div>
+                        <span class="font-bold">Don't be afraid to redirect:</span> If you get a response type you don't want, you can ask the AI to "try again, but this time as a story instead."
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Summary and Review -->
+        <div class="card bg-purple-50 mb-8">
+            <h2 class="text-2xl font-bold text-purple-700 mb-4">Module Summary</h2>
+            <ul class="summary">
+                <li>AI can generate many different types of responses: informative, creative, list-based, storytelling, problem-solving, and analytical.</li>
+                <li>The way you phrase your prompt will influence what type of response you get.</li>
+                <li>Start your prompt with clear words that signal what type of response you want.</li>
+                <li>Be specific about format, length, tone, and audience to better control the response.</li>
+                <li>You can always ask the AI to change its response type if the first answer isn't what you wanted.</li>
+            </ul>
+        </div>
+
+        <!-- Quiz -->
+        <div class="card bg-yellow-50 mb-8 relative overflow-hidden">
+            <div class="ribbon"><span>Quiz Time!</span></div>
+            <h2 class="text-2xl font-bold text-center text-yellow-700 mb-6">Quick Knowledge Check</h2>
+            <div id="quiz" class="space-y-6">
+                <div class="question">
+                    <p class="font-bold mb-2">1. If you wanted to get a list of healthy snacks, what type of response would you be looking for?</p>
+                    <div class="ml-4 space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q1" value="creative" class="mr-2">
+                            Creative Response
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q1" value="list" class="mr-2">
+                            List-Based Response
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q1" value="story" class="mr-2">
+                            Storytelling Response
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <p class="font-bold mb-2">2. Which words might you start with to get a storytelling response?</p>
+                    <div class="ml-4 space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q2" value="explain" class="mr-2">
+                            "Explain how..."
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q2" value="list" class="mr-2">
+                            "List the top 5..."
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q2" value="tell" class="mr-2">
+                            "Tell me a story about..."
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <p class="font-bold mb-2">3. If the AI gives you an informative response but you wanted a creative one, what should you do?</p>
+                    <div class="ml-4 space-y-2">
+                        <label class="flex items-center">
+                            <input type="radio" name="q3" value="give-up" class="mr-2">
+                            Give up and try a completely different topic
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q3" value="redirect" class="mr-2">
+                            Ask it to try again but be more creative this time
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="q3" value="accept" class="mr-2">
+                            Accept whatever response type the AI decides to give
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-6">
+                    <button id="check-quiz" class="btn btn-success">Check Answers</button>
+                </div>
+                <div id="quiz-results" class="mt-4 text-center hidden"></div>
+            </div>
+        </div>
+
+        <!-- Navigation to Next Module -->
+        <div class="flex justify-between mt-10 mb-8">
+            <a href="module2.html" class="btn btn-primary">
+                <i class="fas fa-arrow-left mr-2"></i> Previous Module
+            </a>
+            <a href="#" class="btn btn-primary">
+                Next Module <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
     </div>
 
-    <footer>
-        <p>&copy; 2025 Prompt Power Course. Let's learn together!</p>
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white p-6">
+        <div class="container mx-auto text-center">
+            <p>Prompt Engineering for Young Learners - Module 3</p>
+            <p class="mt-2">© 2023 AI Learning Adventures. All rights reserved.</p>
+        </div>
     </footer>
 
-    <script src="js/scripts.js"></script>
-
+    <script>
+        // Drag and Drop Functionality for Matching Game
+        document.addEventListener('DOMContentLoaded', function() {
+            const dragItems = document.querySelectorAll('.drag-item');
+            const dropAreas = document.querySelectorAll('.drop-area');
+            const checkButton = document.getElementById('check-matches');
+            const resetButton = document.getElementById('reset-matches');
+            const feedback = document.getElementById('match-feedback');
+            
+            let draggedItem = null;
+            
+            // Add drag events to items
+            dragItems.forEach(item => {
+                item.addEventListener('dragstart', function() {
+                    draggedItem = this;
+                    setTimeout(() => this.style.display = 'none', 0);
+                });
+                
+                item.addEventListener('dragend', function() {
+                    setTimeout(() => this.style.display = 'block', 0);
+                    draggedItem = null;
+                });
+            });
+            
+            // Add drop events to areas
+            dropAreas.forEach(area => {
+                area.addEventListener('dragover', function(e) {
+                    e.preventDefault();
+                    this.style.background = '#e6e6e6';
+                });
+                
+                area.addEventListener('dragleave', function() {
+                    this.style.background = '#f9f9f9';
+                });
+                
+                area.addEventListener('drop', function(e) {
+                    e.preventDefault();
+                    this.style.background = '#f9f9f9';
+                    if (draggedItem) {
+                        if (this.children.length > 0) {
+                            const container = document.querySelector('.drag-container');
+                            container.appendChild(this.children[0]);
+                        }
+                        this.appendChild(draggedItem);
+                    }
+                });
+            });
+            
+            // Check matches
+            checkButton.addEventListener('click', function() {
+                let correct = 0;
+                dropAreas.forEach(area => {
+                    if (area.children.length > 0) {
+                        const itemType = area.children[0].getAttribute('data-type');
+                        const areaType = area.getAttribute('data-type');
+                        
+                        if (itemType === areaType) {
+                            area.style.background = '#d1fae5'; // Success green
+                            correct++;
+                        } else {
+                            area.style.background = '#fee2e2'; // Error red
+                        }
+                    }
+                });
+                
+                feedback.classList.remove('hidden');
+                if (correct === 6) {
+                    feedback.textContent = '🎉 Perfect! You matched all the prompts correctly!';
+                    feedback.className = 'mt-4 text-center text-green-600 font-bold';
+                } else {
+                    feedback.textContent = `You got ${correct} out of 6 correct. Keep trying!`;
+                    feedback.className = 'mt-4 text-center text-orange-500 font-bold';
+                }
+            });
+            
+            // Reset game
+            resetButton.addEventListener('click', function() {
+                const container = document.querySelector('.drag-container');
+                dropAreas.forEach(area => {
+                    area.style.background = '#f9f9f9';
+                    if (area.children.length > 0) {
+                        container.appendChild(area.children[0]);
+                    }
+                });
+                feedback.classList.add('hidden');
+            });
+            
+            // Card flip functionality for the detective game
+            const revealButtons = document.querySelectorAll('.reveal-prompt');
+            revealButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const card = this.closest('.game-card');
+                    card.classList.toggle('flipped');
+                });
+            });
+            
+            // Quiz functionality
+            const checkQuizButton = document.getElementById('check-quiz');
+            const quizResults = document.getElementById('quiz-results');
+            
+            checkQuizButton.addEventListener('click', function() {
+                const answers = {
+                    q1: 'list',
+                    q2: 'tell',
+                    q3: 'redirect'
+                };
+                
+                let score = 0;
+                let total = Object.keys(answers).length;
+                
+                for (let question in answers) {
+                    const selected = document.querySelector(`input[name="${question}"]:checked`);
+                    if (selected && selected.value === answers[question]) {
+                        score++;
+                    }
+                }
+                
+                quizResults.classList.remove('hidden');
+                if (score === total) {
+                    quizResults.textContent = `🎉 Amazing! You got all ${total} questions correct!`;
+                    quizResults.className = 'mt-4 text-center text-green-600 font-bold';
+                } else {
+                    quizResults.textContent = `You got ${score} out of ${total} correct. Keep learning!`;
+                    quizResults.className = 'mt-4 text-center text-orange-500 font-bold';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
